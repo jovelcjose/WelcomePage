@@ -2,9 +2,7 @@
 
 ## A simple Bootstrap free template modified for Professional Resume
 
-- reference template [link](https://startbootstrap.com/theme/resume)
-
-## Free to Use and made public.
+- Reference template [link](https://startbootstrap.com/theme/resume)
 
 ## Implementations to be done:
 
