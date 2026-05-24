@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Jovel Jose</title>
+  <meta name="description" content="Architecture write-ups, AI experiments, product lessons, and life in Hamburg by Jovel Jose." />
+  <meta property="og:title" content="Blog — Jovel Jose" />
+  <meta property="og:description" content="Architecture write-ups, AI experiments, product lessons, and life in Hamburg." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joveljose.com/blog/" />
+
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Nav -->
+    <nav class="blog-nav">
+      <a class="blog-nav-back" href="../">
+        &#8592; joveljose.com
+      </a>
+      <div class="blog-nav-right" role="group" aria-label="Category filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="engineering">Engineering</button>
+        <button class="filter-btn" data-filter="ai-automation">AI &amp; Automation</button>
+        <button class="filter-btn" data-filter="product">Product</button>
+        <button class="filter-btn" data-filter="hamburg">Life in Hamburg</button>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="blog-header">
+      <h1 class="blog-heading">Blog</h1>
+      <p class="blog-subheading">Architecture write-ups, AI experiments, product lessons, and life in Hamburg.</p>
+    </header>
+
+    <!-- Post grid -->
+    <main class="post-grid" id="post-grid">
+
+      <a class="post-card"
+         href="hues-of-hamburg-shopify/"
+         data-category="ai-automation">
+        <span class="post-category">AI &amp; Automation</span>
+        <h2 class="post-title">How I Helped Build a Shopify Brand from Zero Using Centralised Automation</h2>
+        <div class="post-meta">
+          <span>May 2026</span>
+          <span>6 min read</span>
+        </div>
+        <p class="post-excerpt">My wife wanted to start a dropshipping business. I wanted to build something useful. Here is how we built Hues of Hamburg using Shopify, a centralised dashboard, and automation that runs on a Pi in our living room.</p>
+        <span class="post-read-more">Read more &#8594;</span>
+      </a>
+
+    </main>
+
+  </div><!-- /container -->
+
+  <footer class="blog-footer">
+    &copy; 2026 Jovel Jose &middot; Built with curiosity
+  </footer>
+
+  <script>
+    /* Category filter */
+    const btns  = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.post-card');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.dataset.hidden = match ? 'false' : 'true';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

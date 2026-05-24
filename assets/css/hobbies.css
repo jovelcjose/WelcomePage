@@ -1,0 +1,178 @@
+/* ============================================================
+   HOBBIES.CSS — joveljose.com/hobbies
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --hobby-bg:          #f5f2ee;
+  --hobby-bg-card:     #ffffff;
+  --hobby-text:        #2c2825;
+  --hobby-text-muted:  #7a6f66;
+  --hobby-accent:      #4a7c59;
+  --hobby-accent-dim:  rgba(74, 124, 89, 0.1);
+  --hobby-border:      #ddd8d0;
+  --font-body:         'IBM Plex Sans', sans-serif;
+  --max-width:         780px;
+  --radius:            12px;
+  --transition:        0.25s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--hobby-bg);
+  color: var(--hobby-text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Nav --- */
+.hobby-nav {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--hobby-border);
+}
+
+.hobby-nav-back {
+  font-size: 0.88rem;
+  color: var(--hobby-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+}
+
+.hobby-nav-back:hover { color: var(--hobby-accent); }
+
+/* --- Header --- */
+.hobby-header {
+  padding: 56px 0 40px;
+  text-align: center;
+}
+
+.hobby-photo-wrap {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  border: 3px solid #c8bba8;
+  overflow: hidden;
+  background: var(--hobby-border);
+}
+
+.hobby-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hobby-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.hobby-heading {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--hobby-text);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.hobby-subheading {
+  font-size: 1rem;
+  color: var(--hobby-text-muted);
+}
+
+/* --- Hobby Sections --- */
+.hobby-sections {
+  padding: 16px 0 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.hobby-section {
+  background: var(--hobby-bg-card);
+  border: 1px solid var(--hobby-border);
+  border-radius: var(--radius);
+  padding: 32px 32px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hobby-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hobby-section:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.hobby-section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.hobby-icon {
+  font-size: 1.7rem;
+  flex-shrink: 0;
+}
+
+.hobby-section-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--hobby-text);
+}
+
+.hobby-section-body {
+  font-size: 0.95rem;
+  color: var(--hobby-text-muted);
+  line-height: 1.78;
+}
+
+.hobby-section-body a {
+  color: var(--hobby-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(74, 124, 89, 0.35);
+  transition: text-decoration-color var(--transition);
+}
+
+.hobby-section-body a:hover {
+  text-decoration-color: var(--hobby-accent);
+}
+
+/* --- Footer --- */
+.hobby-footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--hobby-text-muted);
+  border-top: 1px solid var(--hobby-border);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .hobby-section { padding: 24px 20px; }
+  .hobby-header  { padding: 40px 0 28px; }
+}
