@@ -22,18 +22,32 @@
         &#8592; joveljose.com
       </a>
       <div class="blog-nav-right" role="group" aria-label="Category filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="engineering">Engineering</button>
-        <button class="filter-btn" data-filter="ai-automation">AI &amp; Automation</button>
-        <button class="filter-btn" data-filter="product">Product</button>
-        <button class="filter-btn" data-filter="hamburg">Life in Hamburg</button>
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+        </div>
+        <button class="filter-btn active" data-filter="all"
+                data-en="All" data-de="Alle">All</button>
+        <button class="filter-btn" data-filter="engineering"
+                data-en="Engineering" data-de="Technik">Engineering</button>
+        <button class="filter-btn" data-filter="ai-automation"
+                data-en="AI &amp; Automation" data-de="KI &amp; Automatisierung">AI &amp; Automation</button>
+        <button class="filter-btn" data-filter="product"
+                data-en="Product" data-de="Produkt">Product</button>
+        <button class="filter-btn" data-filter="hamburg"
+                data-en="Life in Hamburg" data-de="Leben in Hamburg">Life in Hamburg</button>
       </div>
     </nav>
 
     <!-- Header -->
     <header class="blog-header">
-      <h1 class="blog-heading">Blog</h1>
-      <p class="blog-subheading">Architecture write-ups, AI experiments, product lessons, and life in Hamburg.</p>
+      <h1 class="blog-heading"
+          data-en="Blog"
+          data-de="Blog">Blog</h1>
+      <p class="blog-subheading"
+         data-en="Architecture write-ups, AI experiments, product lessons, and life in Hamburg."
+         data-de="Architektur-Artikel, KI-Experimente, Produktlektionen und das Leben in Hamburg.">Architecture write-ups, AI experiments, product lessons, and life in Hamburg.</p>
     </header>
 
     <!-- Post grid -->
@@ -48,7 +62,9 @@
           <span>May 2026</span>
           <span>6 min read</span>
         </div>
-        <p class="post-excerpt">My wife wanted to start a dropshipping business. I wanted to build something useful. Here is how we built Hues of Hamburg using Shopify, a centralised dashboard, and automation that runs on a Pi in our living room.</p>
+        <p class="post-excerpt"
+           data-en="A family member wanted to start a dropshipping business. I wanted to build something useful. Here is how we built an e-commerce brand using Shopify, a centralised dashboard, and automation that runs on a Pi at home."
+           data-de="Ein Familienmitglied wollte ein Dropshipping-Business starten – und ich wollte die Gelegenheit nutzen, um etwas Nützliches zu bauen. Das Ergebnis: Eine maßgeschneiderte Lösung aus Shopify, einem zentralen Dashboard und schlanker Automatisierung auf einem Raspberry Pi.">A family member wanted to start a dropshipping business. I wanted to build something useful. Here is how we built an e-commerce brand using Shopify, a centralised dashboard, and automation that runs on a Pi at home.</p>
         <span class="post-read-more">Read more &#8594;</span>
       </a>
 
@@ -60,6 +76,7 @@
     &copy; 2026 Jovel Jose &middot; Built with curiosity
   </footer>
 
+  <script src="../assets/js/lang.js"></script>
   <script>
     /* Category filter */
     const btns  = document.querySelectorAll('.filter-btn');

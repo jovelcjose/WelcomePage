@@ -43,6 +43,39 @@ img { max-width: 100%; display: block; }
 .hobby-nav {
   padding: 18px 0;
   border-bottom: 1px solid var(--hobby-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Lang Toggle (hobbies nav) --- */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--hobby-text-muted);
+  padding: 3px 7px;
+  border-radius: 4px;
+  transition: color 0.25s ease;
+  letter-spacing: 0.04em;
+}
+
+.lang-btn:hover { color: var(--hobby-text); }
+.lang-btn.active { color: var(--hobby-accent); font-weight: 600; }
+
+.lang-sep {
+  color: var(--hobby-text-muted);
+  font-size: 0.7rem;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .hobby-nav-back {

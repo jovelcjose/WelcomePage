@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hobbies — Jovel Jose</title>
-  <meta name="description" content="What Jovel Jose does outside the terminal — fitness, paddle boating, travel, tinkering, and community." />
+  <meta name="description" content="What Jovel Jose does outside the terminal — volunteering, tinkering, fitness, paddle boating, and travel." />
   <meta property="og:title" content="Outside the Terminal — Jovel Jose" />
   <meta property="og:description" content="What I do when I'm not building systems." />
   <meta property="og:type" content="website" />
@@ -21,6 +21,11 @@
       <a class="hobby-nav-back" href="../">
         &#8592; joveljose.com
       </a>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      </div>
     </nav>
 
     <!-- Header -->
@@ -34,60 +39,89 @@
         />
         <div class="hobby-photo-placeholder" style="display:none;">&#128512;</div>
       </div>
-      <h1 class="hobby-heading">Outside the Terminal</h1>
-      <p class="hobby-subheading">What I do when I'm not building systems</p>
+      <h1 class="hobby-heading"
+          data-en="Outside the Terminal"
+          data-de="Außerhalb des Terminals">Outside the Terminal</h1>
+      <p class="hobby-subheading"
+         data-en="What I do when I'm not building systems"
+         data-de="Was ich mache, wenn ich keine Systeme baue">What I do when I'm not building systems</p>
     </header>
 
     <!-- Sections -->
     <main class="hobby-sections">
 
+      <!-- 1. Volunteering (was Community — moved to top) -->
+      <section class="hobby-section">
+        <div class="hobby-section-head">
+          <span class="hobby-icon">🤝</span>
+          <h2 class="hobby-section-title"
+              data-en="Volunteering"
+              data-de="Ehrenamt">Volunteering</h2>
+        </div>
+        <p class="hobby-section-body"
+           data-en="Volunteer at ASB Hamburg-Harburg (Arbeiter-Samariter-Bund) — one of Hamburg's oldest welfare organisations. We visit elderly residents, accompany them on walks, and spend time with people who need company. It is not glamorous. There is no career angle. It matters because it matters, and that is enough."
+           data-de="Ehrenamtlicher Helfer beim ASB Hamburg-Harburg (Arbeiter-Samariter-Bund) – einer der traditionsreichsten Hilfsorganisationen der Stadt. Wir besuchen ältere Menschen, begleiten sie bei Spaziergängen oder schenken ihnen einfach Zeit und Gesellschaft. Ein unglaublich erdender und sinnstiftender Ausgleich.">
+          Volunteer at ASB Hamburg-Harburg (Arbeiter-Samariter-Bund) — one of Hamburg's oldest welfare organisations. We visit elderly residents, accompany them on walks, and spend time with people who need company. It is not glamorous. There is no career angle. It matters because it matters, and that is enough.
+        </p>
+      </section>
+
+      <!-- 2. Tinkering & Tech -->
       <section class="hobby-section">
         <div class="hobby-section-head">
           <span class="hobby-icon">🔧</span>
-          <h2 class="hobby-section-title">Tinkering &amp; Tech</h2>
+          <h2 class="hobby-section-title"
+              data-en="Tinkering &amp; Tech"
+              data-de="Basteln &amp; Technik">Tinkering &amp; Tech</h2>
         </div>
-        <p class="hobby-section-body">
+        <p class="hobby-section-body"
+           data-en="Not just a job — also a weekend obsession. Raspberry Pi builds, home automation, running local AI models, building tools that solve small problems around the house. Most of the &lt;a href=&quot;../#lab&quot;&gt;Lab projects&lt;/a&gt; started as something I built on a Saturday afternoon. There is something satisfying about an idea going from concept to working hardware in 48 hours with no budget and no one to approve the design."
+           data-de="Für mich nicht nur ein Beruf, sondern eine echte Wochenend-Obsession. Ob Raspberry-Pi-Projekte, Smart Home, lokale KI-Modelle oder kleine Tools für den Alltag: Die meisten meiner &lt;a href=&quot;../#lab&quot;&gt;Lab-Projekte&lt;/a&gt; entstehen spontan an einem Samstagnachmittag, weil ich ein Problem lösen will.">
           Not just a job — also a weekend obsession. Raspberry Pi builds, home automation, running local AI models, building tools that solve small problems around the house. Most of the <a href="../#lab">Lab projects</a> started as something I built on a Saturday afternoon. There is something satisfying about an idea going from concept to working hardware in 48 hours with no budget and no one to approve the design.
         </p>
       </section>
 
+      <!-- 3. Gym & Fitness -->
       <section class="hobby-section">
         <div class="hobby-section-head">
           <span class="hobby-icon">🏋️</span>
-          <h2 class="hobby-section-title">Gym &amp; Fitness</h2>
+          <h2 class="hobby-section-title"
+              data-en="Gym &amp; Fitness"
+              data-de="Sport &amp; Fitness">Gym &amp; Fitness</h2>
         </div>
-        <p class="hobby-section-body">
+        <p class="hobby-section-body"
+           data-en="Consistency over intensity. Hamburg has good gyms and I use them. Staying physically strong directly improves how I think and work — the correlation is real and I stopped second-guessing it years ago. No secrets here, no programme to sell you. Just showing up three or four times a week and doing the basics well."
+           data-de="Kontinuität schlägt Intensität. Hamburg hat eine tolle Fitness-Szene und ich nutze sie regelmäßig. Körperlich fit zu bleiben, ist für mich die beste Basis, um auch im Job klar und fokussiert denken zu können.">
           Consistency over intensity. Hamburg has good gyms and I use them. Staying physically strong directly improves how I think and work — the correlation is real and I stopped second-guessing it years ago. No secrets here, no programme to sell you. Just showing up three or four times a week and doing the basics well.
         </p>
       </section>
 
+      <!-- 4. Paddle Boating -->
       <section class="hobby-section">
         <div class="hobby-section-head">
           <span class="hobby-icon">🚣</span>
-          <h2 class="hobby-section-title">Paddle Boating</h2>
+          <h2 class="hobby-section-title"
+              data-en="Paddle Boating"
+              data-de="Paddeln">Paddle Boating</h2>
         </div>
-        <p class="hobby-section-body">
+        <p class="hobby-section-body"
+           data-en="Hamburg is built on water and most people who live here never actually use it. Paddle boating on the Alster or the canals is one of the best ways to reset after a dense week. Slow, quiet, completely offline. The city looks different from the water — more relaxed, more human. It is one of those Hamburg things I genuinely look forward to when the weather allows."
+           data-de="Hamburg ist komplett auf dem Wasser gebaut, aber viel zu wenige Menschen nutzen es aktiv. Beim Kanu- oder Kajakfahren auf der Alster und den unzähligen Kanälen kann ich perfekt abschalten. Langsam, friedlich und absolut offline.">
           Hamburg is built on water and most people who live here never actually use it. Paddle boating on the Alster or the canals is one of the best ways to reset after a dense week. Slow, quiet, completely offline. The city looks different from the water — more relaxed, more human. It is one of those Hamburg things I genuinely look forward to when the weather allows.
         </p>
       </section>
 
+      <!-- 5. Travelling -->
       <section class="hobby-section">
         <div class="hobby-section-head">
           <span class="hobby-icon">✈️</span>
-          <h2 class="hobby-section-title">Travelling</h2>
+          <h2 class="hobby-section-title"
+              data-en="Travelling"
+              data-de="Reisen">Travelling</h2>
         </div>
-        <p class="hobby-section-body">
+        <p class="hobby-section-body"
+           data-en="Living between Germany and India means travel is part of life, not just a holiday. Europe by train is still one of the best ways to explore — slower, more honest, and you actually see the places you pass through. Current count: 8 countries. The goal is not to collect stamps but to understand how different systems — cities, cultures, logistics — actually work. It informs how I think about building systems too."
+           data-de="Mein Leben spielt sich zwischen Deutschland und Indien ab. Dadurch ist das Reisen für mich kein reiner Urlaub, sondern fester Bestandteil meines Alltags. Gleichzeitig gibt es für mich kaum etwas Besseres, als Europa ganz entspannt mit dem Zug zu entdecken.">
           Living between Germany and India means travel is part of life, not just a holiday. Europe by train is still one of the best ways to explore — slower, more honest, and you actually see the places you pass through. Current count: 8 countries. The goal is not to collect stamps but to understand how different systems — cities, cultures, logistics — actually work. It informs how I think about building systems too.
-        </p>
-      </section>
-
-      <section class="hobby-section">
-        <div class="hobby-section-head">
-          <span class="hobby-icon">🤝</span>
-          <h2 class="hobby-section-title">Community</h2>
-        </div>
-        <p class="hobby-section-body">
-          Volunteer at ASB Hamburg-Harburg (Arbeiter-Samariter-Bund) — one of Hamburg's oldest welfare organisations. We visit elderly residents, accompany them on walks, and spend time with people who need company. It is not glamorous. There is no career angle. It matters because it matters, and that is enough.
         </p>
       </section>
 
@@ -99,6 +133,7 @@
     &copy; 2026 Jovel Jose &middot; Built with curiosity
   </footer>
 
+  <script src="../assets/js/lang.js"></script>
   <script>
     /* Scroll reveal */
     const sections = document.querySelectorAll('.hobby-section');

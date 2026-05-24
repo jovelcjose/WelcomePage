@@ -829,6 +829,91 @@ footer {
 }
 
 /* ============================================================
+   LANG TOGGLE
+   ============================================================ */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 14px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 3px 7px;
+  border-radius: 4px;
+  transition: color var(--transition);
+  letter-spacing: 0.05em;
+}
+
+.lang-btn:hover { color: var(--text-primary); }
+.lang-btn.active { color: var(--accent-cyan); font-weight: 700; }
+
+.lang-sep {
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* --- Expand label --- */
+.expand-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.07em;
+  opacity: 0.55;
+  display: block;
+  margin-top: 4px;
+}
+
+/* --- Goals section icon --- */
+.goal-icon {
+  font-size: 1.55rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* --- Languages subsection --- */
+.languages-section {
+  margin-top: 48px;
+}
+
+.languages-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.lang-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-pill {
+  font-family: var(--font-mono);
+  font-size: 0.83rem;
+  padding: 7px 18px;
+  border: 1px solid var(--border-solid);
+  border-radius: 20px;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  letter-spacing: 0.04em;
+  transition: border-color var(--transition);
+}
+
+.lang-pill:hover { border-color: var(--border-glow); }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {

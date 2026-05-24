@@ -191,6 +191,49 @@ img { max-width: 100%; display: block; }
 
 .post-card:hover .post-read-more { gap: 8px; }
 
+/* --- Lang Toggle (blog nav) --- */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--blog-text-muted);
+  padding: 3px 7px;
+  border-radius: 4px;
+  transition: color var(--transition);
+  letter-spacing: 0.04em;
+}
+
+.lang-btn:hover { color: var(--blog-text); }
+.lang-btn.active { color: var(--blog-accent); font-weight: 600; }
+
+.lang-sep {
+  color: var(--blog-text-muted);
+  font-size: 0.7rem;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* --- Article disclaimer --- */
+.article-disclaimer {
+  font-size: 0.85rem;
+  color: var(--blog-text-muted);
+  font-style: italic;
+  padding: 10px 16px;
+  border-left: 3px solid var(--blog-border);
+  background: #f2ede6;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
 /* --- Blog Footer --- */
 .blog-footer {
   padding: 24px;

@@ -26,13 +26,30 @@
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">JJ</a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#lab">Lab</a></li>
-        <li><a href="blog/">Blog</a></li>
-        <li><a href="hobbies/">Hobbies</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about"
+               data-en="About"
+               data-de="Über mich">About</a></li>
+        <li><a href="#experience"
+               data-en="Experience"
+               data-de="Erfahrung">Experience</a></li>
+        <li><a href="#lab"
+               data-en="Lab"
+               data-de="Projekte">Lab</a></li>
+        <li><a href="blog/"
+               data-en="Blog"
+               data-de="Blog">Blog</a></li>
+        <li><a href="hobbies/"
+               data-en="Hobbies"
+               data-de="Hobbys">Hobbies</a></li>
+        <li><a href="#contact"
+               data-en="Contact"
+               data-de="Kontakt">Contact</a></li>
       </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -41,12 +58,12 @@
 
   <!-- Mobile menu overlay -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#lab">Lab</a>
-    <a href="blog/">Blog</a>
-    <a href="hobbies/">Hobbies</a>
-    <a href="#contact">Contact</a>
+    <a href="#about"      data-en="About"      data-de="Über mich">About</a>
+    <a href="#experience" data-en="Experience" data-de="Erfahrung">Experience</a>
+    <a href="#lab"        data-en="Lab"        data-de="Projekte">Lab</a>
+    <a href="blog/"       data-en="Blog"       data-de="Blog">Blog</a>
+    <a href="hobbies/"    data-en="Hobbies"    data-de="Hobbys">Hobbies</a>
+    <a href="#contact"    data-en="Contact"    data-de="Kontakt">Contact</a>
   </div>
 
   <!-- ============================================================
@@ -69,15 +86,23 @@
 
       <h1 class="hero-name">Jovel Jose</h1>
 
-      <p class="hero-role">Technical Lead &middot; AI Systems Builder &middot; Edge-to-Cloud</p>
+      <p class="hero-role"
+         data-en="Technical Lead &middot; AI Systems Builder &middot; Edge-to-Cloud"
+         data-de="Technical Lead &middot; KI-Systeme &middot; Edge-to-Cloud">Technical Lead &middot; AI Systems Builder &middot; Edge-to-Cloud</p>
 
-      <p class="hero-tagline">
+      <p class="hero-tagline"
+         data-en="I build the infrastructure that keeps complex systems running &mdash; at work and at home."
+         data-de="Ich baue die Infrastruktur, die komplexe Systeme am Laufen hält &ndash; im Job wie im Alltag.">
         I build the infrastructure that keeps complex systems running &mdash; at work and at home.
       </p>
 
       <div class="hero-ctas">
-        <a href="#experience" class="btn btn-filled">View Work</a>
-        <a href="blog/" class="btn">Read Blog</a>
+        <a href="#experience" class="btn btn-filled"
+           data-en="View Work"
+           data-de="Projekte ansehen">View Work</a>
+        <a href="blog/" class="btn"
+           data-en="Read Blog"
+           data-de="Blog lesen">Read Blog</a>
       </div>
     </div>
 
@@ -94,25 +119,36 @@
        ============================================================ -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title reveal">About</h2>
+      <h2 class="section-title reveal"
+          data-en="About"
+          data-de="Über mich">About</h2>
 
       <div class="about-cards">
         <div class="about-card reveal">
-          <div class="about-card-label">01 / At Work</div>
+          <div class="about-card-label"
+               data-en="01 / At Work"
+               data-de="01 / Im Job">01 / At Work</div>
           <h3>Technical Lead</h3>
-          <p>Technical Lead at CIMPA PLM Services (Airbus subcontractor), Hamburg. Nine years building cloud-native data infrastructure for safety-critical systems. Currently leading data integration architecture for the Airbus CoreElec platform on the A320 programme within a large-scale SAFe delivery train.</p>
+          <p data-en="Technical Lead at CIMPA PLM Services (Airbus subcontractor), Hamburg. Nine years building cloud-native data infrastructure for safety-critical systems. Currently leading data integration architecture for the Airbus CoreElec platform on the A320 programme within a large-scale SAFe delivery train."
+             data-de="Technical Lead bei CIMPA PLM Services (Airbus-Zulieferer), Hamburg. 9 Jahre Erfahrung im Aufbau cloudnativer Dateninfrastrukturen für sicherheitskritische Systeme. Aktuell verantwortlich für die Datenintegrations-Architektur der Airbus CoreElec-Plattform im A320-Programm innerhalb eines großen SAFe-Release-Trains.">Technical Lead at CIMPA PLM Services (Airbus subcontractor), Hamburg. Nine years building cloud-native data infrastructure for safety-critical systems. Currently leading data integration architecture for the Airbus CoreElec platform on the A320 programme within a large-scale SAFe delivery train.</p>
         </div>
 
         <div class="about-card reveal">
-          <div class="about-card-label">02 / What I Build</div>
+          <div class="about-card-label"
+               data-en="02 / What I Build"
+               data-de="02 / Tech-Stack &amp; Fokus">02 / What I Build</div>
           <h3>The Stack</h3>
-          <p>Event-driven microservices in NestJS and Python. AWS Lambda, ECS, SNS/SQS, DynamoDB, MongoDB, PostgreSQL. Legacy modernisation and cloud migration. Architecture Decision Records. Team leadership across cross-functional agile teams.</p>
+          <p data-en="Event-driven microservices in NestJS and Python. AWS Lambda, ECS, SNS/SQS, DynamoDB, MongoDB, PostgreSQL. Legacy modernisation and cloud migration. Architecture Decision Records. Team leadership across cross-functional agile teams."
+             data-de="Event-gesteuerte Microservices mit NestJS und Python. AWS Lambda, ECS, SNS/SQS, DynamoDB, MongoDB, PostgreSQL. Legacy-Modernisierung und Cloud-Migrationen. Architecture Decision Records (ADRs). Technische Teamführung in funktionsübergreifenden agilen Teams.">Event-driven microservices in NestJS and Python. AWS Lambda, ECS, SNS/SQS, DynamoDB, MongoDB, PostgreSQL. Legacy modernisation and cloud migration. Architecture Decision Records. Team leadership across cross-functional agile teams.</p>
         </div>
 
         <div class="about-card reveal">
-          <div class="about-card-label">03 / After Hours</div>
+          <div class="about-card-label"
+               data-en="03 / After Hours"
+               data-de="03 / Nach Feierabend">03 / After Hours</div>
           <h3>Home Lab</h3>
-          <p>AI-powered automation systems on Raspberry Pi AI HAT+ (Hailo-10H, 40 TOPS). Local LLM inference — Qwen and Llama at €0/month. Personal finance intelligence agents. E-commerce automation. Building tools that solve real problems.</p>
+          <p data-en="AI-powered automation systems on Raspberry Pi AI HAT+ (Hailo-10H, 40 TOPS). Local LLM inference — Qwen and Llama at €0/month. Personal finance intelligence agents. E-commerce automation. Building tools that solve real problems."
+             data-de="KI-gestützte Automatisierung auf dem Raspberry Pi AI HAT+ (Hailo-10H, 40 TOPS). Lokale LLM-Inferenz mit Qwen und Llama – für null Euro Serverkosten im Monat. Intelligente Agenten für die eigenen Finanzen, E-Commerce-Automatisierung und Tools, die echte Alltagsprobleme lösen.">AI-powered automation systems on Raspberry Pi AI HAT+ (Hailo-10H, 40 TOPS). Local LLM inference — Qwen and Llama at €0/month. Personal finance intelligence agents. E-commerce automation. Building tools that solve real problems.</p>
         </div>
       </div>
 
@@ -120,12 +156,12 @@
         <a class="hobby-link" href="hobbies/">
           <span class="hobby-emoji">🏋️</span>
           <span class="hobby-label">Gym</span>
-          <span class="hobby-tooltip">Fitness & strength</span>
+          <span class="hobby-tooltip">Fitness &amp; strength</span>
         </a>
         <a class="hobby-link" href="hobbies/">
           <span class="hobby-emoji">🚣</span>
           <span class="hobby-label">Paddle</span>
-          <span class="hobby-tooltip">Alster & canals</span>
+          <span class="hobby-tooltip">Alster &amp; canals</span>
         </a>
         <a class="hobby-link" href="hobbies/">
           <span class="hobby-emoji">✈️</span>
@@ -146,7 +182,9 @@
        ============================================================ -->
   <section id="experience">
     <div class="container">
-      <h2 class="section-title reveal">Experience</h2>
+      <h2 class="section-title reveal"
+          data-en="Experience"
+          data-de="Erfahrung">Experience</h2>
 
       <div class="timeline-wrap">
         <div class="timeline-line"></div>
@@ -161,14 +199,22 @@
               <span class="expand-icon">▶</span>
             </div>
             <div class="entry-company">CIMPA PLM Services &middot; Hamburg</div>
+            <span class="expand-label"
+                  data-en="Show details"
+                  data-de="Details anzeigen">Show details</span>
           </div>
           <div class="entry-bullets">
             <ul>
-              <li>Leading data integration architecture between legacy electrical design systems and the next-generation CAPITAL platform for the A320 programme</li>
-              <li>Designing microservices in NestJS and Python on AWS Lambda, ECS, SNS, SQS</li>
-              <li>Driving CoreElec V2 data model transformation to MongoDB using the EWIS data model</li>
-              <li>Working within a large-scale SAFe delivery train, coordinating with Airbus architects and multiple parallel programme teams</li>
-              <li>CI/CD pipelines with SonarQube and Checkmarx; legacy services on OpenShift</li>
+              <li data-en="Leading data integration architecture between legacy electrical design systems and the next-generation CAPITAL platform for the A320 programme"
+                  data-de="Leitung der Datenintegrations-Architektur zwischen bestehenden Systemen für elektrisches Design (Legacy) und der Next-Gen-Plattform CAPITAL für das A320-Programm.">Leading data integration architecture between legacy electrical design systems and the next-generation CAPITAL platform for the A320 programme</li>
+              <li data-en="Designing microservices in NestJS and Python on AWS Lambda, ECS, SNS, SQS"
+                  data-de="Konzeption und Entwicklung von Microservices in NestJS und Python auf Basis von AWS Lambda, ECS, SNS und SQS.">Designing microservices in NestJS and Python on AWS Lambda, ECS, SNS, SQS</li>
+              <li data-en="Driving CoreElec V2 data model transformation to MongoDB using the EWIS data model"
+                  data-de="Verantwortlich für die Datenmodell-Transformation von CoreElec V2 hin zu MongoDB unter Verwendung des EWIS-Datenmodells.">Driving CoreElec V2 data model transformation to MongoDB using the EWIS data model</li>
+              <li data-en="Working within a large-scale SAFe delivery train, coordinating with Airbus architects and multiple parallel programme teams"
+                  data-de="Arbeit in einem großen SAFe-Release-Train, Koordination mit Airbus-Architekten, Product Owner und mehreren parallelen Programm-Teams.">Working within a large-scale SAFe delivery train, coordinating with Airbus architects and multiple parallel programme teams</li>
+              <li data-en="CI/CD pipelines with SonarQube and Checkmarx; legacy services on OpenShift"
+                  data-de="CI/CD-Pipelines mit SonarQube und Checkmarx; Legacy-Services auf OpenShift.">CI/CD pipelines with SonarQube and Checkmarx; legacy services on OpenShift</li>
             </ul>
           </div>
         </div>
@@ -183,13 +229,20 @@
               <span class="expand-icon">▶</span>
             </div>
             <div class="entry-company">CIMPA PLM Services &middot; Donauwörth</div>
+            <span class="expand-label"
+                  data-en="Show details"
+                  data-de="Details anzeigen">Show details</span>
           </div>
           <div class="entry-bullets">
             <ul>
-              <li>On-site requirements gathering at Airbus Helicopters Donauwörth</li>
-              <li>Built production pace control system for AH160 integrating SAP production data</li>
-              <li>Managed 5-station line planning, resource planning, task logging, T-card management</li>
-              <li>Full product lifecycle ownership as Product Owner from requirements to deployment</li>
+              <li data-en="On-site requirements gathering at Airbus Helicopters Donauwörth"
+                  data-de="Anforderungserhebung vor Ort bei Airbus Helicopters Donauwörth.">On-site requirements gathering at Airbus Helicopters Donauwörth</li>
+              <li data-en="Built production pace control system for AH160 integrating SAP production data"
+                  data-de="Entwicklung eines Produktionstakt-Kontrollsystems für den AH160 mit SAP-Produktionsdatenintegration.">Built production pace control system for AH160 integrating SAP production data</li>
+              <li data-en="Managed 5-station line planning, resource planning, task logging, T-card management"
+                  data-de="Steuerung der 5-stationigen Linienplanung, Ressourcenplanung, Aufgabenerfassung und T-Karten-Management.">Managed 5-station line planning, resource planning, task logging, T-card management</li>
+              <li data-en="Full product lifecycle ownership as Product Owner from requirements to deployment"
+                  data-de="Vollständige Produktverantwortung als Product Owner – von der Anforderungsaufnahme bis zum Go-Live.">Full product lifecycle ownership as Product Owner from requirements to deployment</li>
             </ul>
           </div>
         </div>
@@ -204,14 +257,22 @@
               <span class="expand-icon">▶</span>
             </div>
             <div class="entry-company">CIMPA PLM Services &middot; Hamburg</div>
+            <span class="expand-label"
+                  data-en="Show details"
+                  data-de="Details anzeigen">Show details</span>
           </div>
           <div class="entry-bullets">
             <ul>
-              <li>Automation and digitisation of jig transport operations for the Airbus Beluga programme</li>
-              <li>Full product lifecycle: user stories, sprint planning, stakeholder management</li>
-              <li>Architecture dossiers, functional specifications, AWS cloud migration planning</li>
-              <li>Led technical RFP presentation to ContiTech AG for Industrial IoT Digital Twin solution (AWS, AI-based predictive maintenance, Unity 3D visualisation)</li>
-              <li>Recipient: CIMPA Excellence Award for Exceptional Performance (2025)</li>
+              <li data-en="Automation and digitisation of jig transport operations for the Airbus Beluga programme"
+                  data-de="Automatisierung und Digitalisierung der Jig-Transportprozesse für das Airbus Beluga-Programm.">Automation and digitisation of jig transport operations for the Airbus Beluga programme</li>
+              <li data-en="Full product lifecycle: user stories, sprint planning, stakeholder management"
+                  data-de="Vollständiger Produktlebenszyklus: User Stories, Sprint-Planung, Stakeholder-Management.">Full product lifecycle: user stories, sprint planning, stakeholder management</li>
+              <li data-en="Architecture dossiers, functional specifications, AWS cloud migration planning"
+                  data-de="Erstellung von Architekturdossiers, Fachspezifikationen und AWS-Cloud-Migrationsplanung.">Architecture dossiers, functional specifications, AWS cloud migration planning</li>
+              <li data-en="Led technical RFP presentation to ContiTech AG for Industrial IoT Digital Twin solution (AWS, AI-based predictive maintenance, Unity 3D visualisation)"
+                  data-de="Leitung der technischen RFP-Präsentation bei ContiTech AG für eine Industrial-IoT-Digital-Twin-Lösung (AWS, KI-basierte Predictive Maintenance, Unity-3D-Visualisierung).">Led technical RFP presentation to ContiTech AG for Industrial IoT Digital Twin solution (AWS, AI-based predictive maintenance, Unity 3D visualisation)</li>
+              <li data-en="Recipient: CIMPA Excellence Award for Exceptional Performance (2025)"
+                  data-de="Ausgezeichnet mit dem CIMPA Excellence Award für herausragende Leistungen (2025).">Recipient: CIMPA Excellence Award for Exceptional Performance (2025)</li>
             </ul>
           </div>
         </div>
@@ -226,15 +287,24 @@
               <span class="expand-icon">▶</span>
             </div>
             <div class="entry-company">CIMPA PLM Services &middot; Hamburg</div>
+            <span class="expand-label"
+                  data-en="Show details"
+                  data-de="Details anzeigen">Show details</span>
           </div>
           <div class="entry-bullets">
             <ul>
-              <li>IoT Digital Twin prototype: AWS Greengrass, Raspberry Pi, ThingWorx (internal R&amp;D)</li>
-              <li>Airbus legacy app modernisation: Treatment Results (.NET) and ESDCR (PHP)</li>
-              <li>SQL Server 2008 → 2016 migration; SVN → Git transformation</li>
-              <li>Co-authored AWS cloud migration ARD for both legacy applications</li>
-              <li>CAD software for Airbus electrical drawing management (.NET, Python, Angular)</li>
-              <li>Deployed infrastructure via Terraform, CloudFormation, serverless AWS</li>
+              <li data-en="IoT Digital Twin prototype: AWS Greengrass, Raspberry Pi, ThingWorx (internal R&amp;D)"
+                  data-de="IoT-Digital-Twin-Prototyp: AWS Greengrass, Raspberry Pi, ThingWorx (internes F&amp;E-Projekt).">IoT Digital Twin prototype: AWS Greengrass, Raspberry Pi, ThingWorx (internal R&amp;D)</li>
+              <li data-en="Airbus legacy app modernisation: Treatment Results (.NET) and ESDCR (PHP)"
+                  data-de="Modernisierung von Airbus-Legacy-Anwendungen: Treatment Results (.NET) und ESDCR (PHP).">Airbus legacy app modernisation: Treatment Results (.NET) and ESDCR (PHP)</li>
+              <li data-en="SQL Server 2008 → 2016 migration; SVN → Git transformation"
+                  data-de="SQL-Server-Migration 2008 → 2016; Wechsel von SVN zu Git.">SQL Server 2008 → 2016 migration; SVN → Git transformation</li>
+              <li data-en="Co-authored AWS cloud migration ARD for both legacy applications"
+                  data-de="Mitautor der AWS-Cloud-Migrations-ADR für beide Legacy-Anwendungen.">Co-authored AWS cloud migration ARD for both legacy applications</li>
+              <li data-en="CAD software for Airbus electrical drawing management (.NET, Python, Angular)"
+                  data-de="CAD-Software für das Airbus-Zeichnungsmanagement (Elektro) in .NET, Python und Angular.">CAD software for Airbus electrical drawing management (.NET, Python, Angular)</li>
+              <li data-en="Deployed infrastructure via Terraform, CloudFormation, serverless AWS"
+                  data-de="Infrastruktur-Deployment via Terraform, CloudFormation und serverlosem AWS.">Deployed infrastructure via Terraform, CloudFormation, serverless AWS</li>
             </ul>
           </div>
         </div>
@@ -249,10 +319,14 @@
               <span class="expand-icon">▶</span>
             </div>
             <div class="entry-company">IFAK e.V. &middot; Magdeburg</div>
+            <span class="expand-label"
+                  data-en="Show details"
+                  data-de="Details anzeigen">Show details</span>
           </div>
           <div class="entry-bullets">
             <ul>
-              <li>Research and prototyping in industrial automation and Industry 4.0 systems</li>
+              <li data-en="Research and prototyping in industrial automation and Industry 4.0 systems"
+                  data-de="Forschung und Prototypentwicklung im Bereich industrieller Automation und Industrie-4.0-Systeme.">Research and prototyping in industrial automation and Industry 4.0 systems</li>
             </ul>
           </div>
         </div>
@@ -267,12 +341,18 @@
               <span class="expand-icon">▶</span>
             </div>
             <div class="entry-company">AronLabz &middot; Thrissur, India</div>
+            <span class="expand-label"
+                  data-en="Show details"
+                  data-de="Details anzeigen">Show details</span>
           </div>
           <div class="entry-bullets">
             <ul>
-              <li>Embedded software and PCB design for IoT devices</li>
-              <li>Arduino and Texas Instruments microcontroller programming</li>
-              <li>Full lifecycle: circuit design → prototyping → testing</li>
+              <li data-en="Embedded software and PCB design for IoT devices"
+                  data-de="Embedded-Software-Entwicklung und Leiterplattendesign für IoT-Geräte.">Embedded software and PCB design for IoT devices</li>
+              <li data-en="Arduino and Texas Instruments microcontroller programming"
+                  data-de="Programmierung von Arduino- und Texas-Instruments-Mikrocontrollern.">Arduino and Texas Instruments microcontroller programming</li>
+              <li data-en="Full lifecycle: circuit design → prototyping → testing"
+                  data-de="Vollständiger Entwicklungslebenszyklus: Schaltungsentwurf → Prototypenbau → Testing.">Full lifecycle: circuit design → prototyping → testing</li>
             </ul>
           </div>
         </div>
@@ -286,17 +366,25 @@
        ============================================================ -->
   <section id="lab">
     <div class="container">
-      <h2 class="section-title reveal">Lab</h2>
-      <p class="section-subtitle reveal">Things I build outside work</p>
+      <h2 class="section-title reveal"
+          data-en="Lab"
+          data-de="Projekte">Lab</h2>
+      <p class="section-subtitle reveal"
+         data-en="Things I build outside work"
+         data-de="Was ich außerhalb der Arbeit baue">Things I build outside work</p>
 
       <div class="lab-grid">
 
         <div class="lab-card reveal">
           <div class="lab-card-top">
             <span class="lab-card-name">Wealth Command Center</span>
-            <span class="status-badge building">Building</span>
+            <span class="status-badge building"
+                  data-en="Building"
+                  data-de="In Entwicklung">Building</span>
           </div>
-          <p class="lab-card-desc">Personal finance intelligence system — multi-asset tracking across Germany and India, automated alerts, nightly portfolio agents, Telegram delivery.</p>
+          <p class="lab-card-desc"
+             data-en="Personal finance intelligence system — multi-asset tracking across Germany and India, automated alerts, nightly portfolio agents, Telegram delivery."
+             data-de="Persönliches Finanzintelligenz-System · Multi-Asset-Tracking für Konten und Anlagen in Deutschland und Indien. Ausgestattet mit automatisierten Benachrichtigungen und Portfolio-Agenten, die jede Nacht laufen und Updates direkt per Telegram liefern.">Personal finance intelligence system — multi-asset tracking across Germany and India, automated alerts, nightly portfolio agents, Telegram delivery.</p>
           <div class="lab-tags">
             <span class="tag">Raspberry Pi</span>
             <span class="tag">Python</span>
@@ -309,9 +397,13 @@
         <div class="lab-card reveal">
           <div class="lab-card-top">
             <span class="lab-card-name">Career Command Center</span>
-            <span class="status-badge building">Building</span>
+            <span class="status-badge building"
+                  data-en="Building"
+                  data-de="In Entwicklung">Building</span>
           </div>
-          <p class="lab-card-desc">Dual-profile career engine — job discovery across German job boards, application tracking, AI-powered CV and cover letter generation, personal brand scoring.</p>
+          <p class="lab-card-desc"
+             data-en="Dual-profile career engine — job discovery across German job boards, application tracking, AI-powered CV and cover letter generation, personal brand scoring."
+             data-de="Dual-Profil-Karriere-Engine · Automatisierte Jobsuche auf deutschen Jobbörsen, Bewerbungsverfolgung, KI-gestützte Generierung von Lebensläufen und Anschreiben sowie ein persönliches Brand Scoring.">Dual-profile career engine — job discovery across German job boards, application tracking, AI-powered CV and cover letter generation, personal brand scoring.</p>
           <div class="lab-tags">
             <span class="tag">Raspberry Pi</span>
             <span class="tag">NestJS</span>
@@ -323,9 +415,13 @@
         <div class="lab-card reveal">
           <div class="lab-card-top">
             <span class="lab-card-name">Local LLM Stack</span>
-            <span class="status-badge live">Live</span>
+            <span class="status-badge live"
+                  data-en="Live"
+                  data-de="Aktiv">Live</span>
           </div>
-          <p class="lab-card-desc">Qwen and Llama running on Raspberry Pi AI HAT+ with Hailo-10H (40 TOPS) — full local inference at zero ongoing cost. Used for triage, filtering, and pre-processing across all Pi projects.</p>
+          <p class="lab-card-desc"
+             data-en="Qwen and Llama running on Raspberry Pi AI HAT+ with Hailo-10H (40 TOPS) — full local inference at zero ongoing cost. Used for triage, filtering, and pre-processing across all Pi projects."
+             data-de="Qwen und Llama auf dem Raspberry Pi AI HAT+ mit Hailo-10H (40 TOPS). Vollständig lokale Inferenz ohne laufende Kosten. Dient als zentrales Tool für Triage, Filterung und Vorverarbeitung in all meinen Pi-Projekten.">Qwen and Llama running on Raspberry Pi AI HAT+ with Hailo-10H (40 TOPS) — full local inference at zero ongoing cost. Used for triage, filtering, and pre-processing across all Pi projects.</p>
           <div class="lab-tags">
             <span class="tag">Hailo-10H</span>
             <span class="tag">Python</span>
@@ -338,9 +434,13 @@
         <div class="lab-card reveal">
           <div class="lab-card-top">
             <span class="lab-card-name">E-commerce Automation</span>
-            <span class="status-badge live">Live</span>
+            <span class="status-badge live"
+                  data-en="Live"
+                  data-de="Aktiv">Live</span>
           </div>
-          <p class="lab-card-desc">Centralised Shopify operations for a Hamburg dropshipping brand — inventory sync, order tracking, marketing automation, nightly reporting via Telegram.</p>
+          <p class="lab-card-desc"
+             data-en="Centralised Shopify operations for a Hamburg dropshipping brand — order tracking, finance monitoring, marketing automation, nightly reporting via Telegram."
+             data-de="Zentralisiertes Shopify-Management für eine E-Commerce-Marke. Automatisiertes Finanz-Tracking, Bestellüberwachung, Marketing-Automatisierung und nächtliche Statusberichte via Telegram.">Centralised Shopify operations for a Hamburg dropshipping brand — order tracking, finance monitoring, marketing automation, nightly reporting via Telegram.</p>
           <div class="lab-tags">
             <span class="tag">Shopify API</span>
             <span class="tag">n8n</span>
@@ -352,9 +452,13 @@
         <div class="lab-card reveal">
           <div class="lab-card-top">
             <span class="lab-card-name">Monitoring Agents</span>
-            <span class="status-badge live">Live</span>
+            <span class="status-badge live"
+                  data-en="Live"
+                  data-de="Aktiv">Live</span>
           </div>
-          <p class="lab-card-desc">Nightly intelligence agents running on Pi — market signals, job alerts, portfolio movements, weather, all delivered to Telegram by morning.</p>
+          <p class="lab-card-desc"
+             data-en="Nightly intelligence agents running on Pi — market signals, job alerts, portfolio movements, weather, all delivered to Telegram by morning."
+             data-de="Intelligente Hintergrund-Agenten auf dem Pi, die nachts arbeiten: Sie scannen Marktsignale, filtern Jobbenachrichtigungen und tracken Portfolio-Bewegungen, damit morgens alles fertig aufbereitet in Telegram bereitsteht.">Nightly intelligence agents running on Pi — market signals, job alerts, portfolio movements, weather, all delivered to Telegram by morning.</p>
           <div class="lab-tags">
             <span class="tag">Python</span>
             <span class="tag">Raspberry Pi</span>
@@ -368,54 +472,57 @@
   </section>
 
   <!-- ============================================================
-       SECTION 5: CERTIFICATIONS
+       SECTION 5: WHERE I WANT TO GO (new)
        ============================================================ -->
-  <section id="certifications">
+  <section id="goals">
     <div class="container">
-      <h2 class="section-title reveal">Certifications &amp; Recognition</h2>
+      <h2 class="section-title reveal"
+          data-en="Where I Want to Go"
+          data-de="Meine Ziele">Where I Want to Go</h2>
+      <p class="section-subtitle reveal"
+         data-en="Areas I'm deeply interested in and actively building toward"
+         data-de="Bereiche, die mich faszinieren und auf die ich aktiv hinarbeite">Areas I'm deeply interested in and actively building toward</p>
 
-      <div class="cert-row">
+      <div class="lab-grid">
 
-        <div class="cert-card reveal">
-          <div class="cert-name">PSPO I</div>
-          <div class="cert-issuer">Scrum.org</div>
-          <div class="cert-date">Apr 2025</div>
-          <div class="cert-verified">&#10003; Verified</div>
+        <div class="lab-card reveal">
+          <span class="goal-icon">&#9889;</span>
+          <span class="lab-card-name"
+                data-en="AI &amp; Automation"
+                data-de="KI &amp; Automatisierung">AI &amp; Automation</span>
+          <p class="lab-card-desc"
+             data-en="I build AI-powered systems in my own time — local LLM inference, intelligent agents, automation pipelines. I want to do this professionally, not just on weekends."
+             data-de="Ich baue leidenschaftlich gerne KI-Systeme in meiner Freizeit – von lokaler LLM-Inferenz über intelligente Agenten bis hin zu Automatisierungs-Pipelines. Mein Ziel ist es, diese Technologien nicht mehr nur am Wochenende, sondern Fulltime im Beruf voranzutreiben.">I build AI-powered systems in my own time — local LLM inference, intelligent agents, automation pipelines. I want to do this professionally, not just on weekends.</p>
         </div>
 
-        <div class="cert-card reveal">
-          <div class="cert-name">B1 German</div>
-          <div class="cert-issuer">g.a.s.t</div>
-          <div class="cert-date">Dec 2023</div>
-          <div class="cert-verified">&#10003; Verified</div>
+        <div class="lab-card reveal">
+          <span class="goal-icon">&#128202;</span>
+          <span class="lab-card-name"
+                data-en="Personal Finance Intelligence"
+                data-de="Persönliche Finanzintelligenz">Personal Finance Intelligence</span>
+          <p class="lab-card-desc"
+             data-en="Financial data is messy, scattered, and underserved by good tooling. I'm building the system I wish existed — and I want to work in fintech where this thinking is valued."
+             data-de="Finanzdaten sind oft unübersichtlich, fragmentiert und moderne Tools lassen zu wünschen übrig. Ich baue aktuell das System, das ich mir selbst immer gewünscht habe. Diesen datengetriebenen Ansatz möchte ich im FinTech-Sektor einbringen, wo genau dieses Denken geschätzt wird.">Financial data is messy, scattered, and underserved by good tooling. I'm building the system I wish existed — and I want to work in fintech where this thinking is valued.</p>
         </div>
 
-        <div class="cert-card reveal">
-          <div class="cert-name">Google Gen AI &times;4</div>
-          <div class="cert-issuer">Google</div>
-          <div class="cert-date">May 2025</div>
-          <div class="cert-verified">&#10003; Verified</div>
+        <div class="lab-card reveal">
+          <span class="goal-icon">&#128674;</span>
+          <span class="lab-card-name"
+                data-en="Logistics Technology"
+                data-de="Logistiktechnologie">Logistics Technology</span>
+          <p class="lab-card-desc"
+             data-en="Hamburg is one of Europe's biggest logistics hubs and the technology powering it is overdue for modernisation. Event-driven systems and real-time data pipelines are exactly what I build."
+             data-de="Hamburg ist einer der wichtigsten Logistikhubs Europas, doch die technologische Infrastruktur hinter den Kulissen ist reif für die Zukunft. Event-gesteuerte Systeme und Echtzeit-Datenpipelines sind genau mein Metier – hier möchte ich anpacken.">Hamburg is one of Europe's biggest logistics hubs and the technology powering it is overdue for modernisation. Event-driven systems and real-time data pipelines are exactly what I build.</p>
         </div>
 
-        <div class="cert-card reveal">
-          <div class="cert-name">Excellence Award</div>
-          <div class="cert-issuer">CIMPA PLM Services</div>
-          <div class="cert-date">2025</div>
-          <div class="cert-verified cert-award">&#9733; Recognition</div>
-        </div>
-
-        <div class="cert-card reveal">
-          <div class="cert-name">AWS SAA</div>
-          <div class="cert-issuer">Amazon Web Services</div>
-          <div class="cert-date">—</div>
-          <div class="cert-progress">In Progress</div>
-        </div>
-
-        <div class="cert-card reveal">
-          <div class="cert-name">B2 German</div>
-          <div class="cert-issuer">Language Certification</div>
-          <div class="cert-date">—</div>
-          <div class="cert-progress">In Progress</div>
+        <div class="lab-card reveal">
+          <span class="goal-icon">&#127919;</span>
+          <span class="lab-card-name"
+                data-en="New Opportunities"
+                data-de="Neue Herausforderungen">New Opportunities</span>
+          <p class="lab-card-desc"
+             data-en="After 9 years in aerospace software, I'm ready for a new challenge — engineering leadership at a product company where I can own outcomes, not just deliverables."
+             data-de="Nach 9 Jahren im Bereich Aerospace-Software bin ich bereit für das nächste Kapitel: Eine Führungsrolle im Engineering bei einem produktfokussierten Unternehmen, bei dem ich echte Ergebnisse mitverantworten kann, statt nur Pflichtenhefte abzuarbeiten.">After 9 years in aerospace software, I'm ready for a new challenge — engineering leadership at a product company where I can own outcomes, not just deliverables.</p>
         </div>
 
       </div>
@@ -423,11 +530,87 @@
   </section>
 
   <!-- ============================================================
-       SECTION 6: CONTACT
+       SECTION 6: CERTIFICATIONS
+       ============================================================ -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title reveal"
+          data-en="Certifications &amp; Recognition"
+          data-de="Zertifikate &amp; Auszeichnungen">Certifications &amp; Recognition</h2>
+
+      <div class="cert-row">
+
+        <div class="cert-card reveal">
+          <div class="cert-name">PSPO I</div>
+          <div class="cert-issuer">Scrum.org</div>
+          <div class="cert-date">Apr 2025</div>
+          <div class="cert-verified"
+               data-en="&#10003; Verified"
+               data-de="&#10003; Verifiziert">&#10003; Verified</div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-name">B1 German</div>
+          <div class="cert-issuer">g.a.s.t</div>
+          <div class="cert-date">Dec 2023</div>
+          <div class="cert-verified"
+               data-en="&#10003; Verified"
+               data-de="&#10003; Verifiziert">&#10003; Verified</div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-name">Google Gen AI &times;4</div>
+          <div class="cert-issuer">Google</div>
+          <div class="cert-date">May 2025</div>
+          <div class="cert-verified"
+               data-en="&#10003; Verified"
+               data-de="&#10003; Verifiziert">&#10003; Verified</div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-name">Excellence Award</div>
+          <div class="cert-issuer">CIMPA PLM Services</div>
+          <div class="cert-date">2025</div>
+          <div class="cert-verified cert-award"
+               data-en="&#9733; Recognition"
+               data-de="&#9733; Auszeichnung">&#9733; Recognition</div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-name">AWS SAA</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-date">—</div>
+          <div class="cert-progress"
+               data-en="In Progress"
+               data-de="In Bearbeitung">In Progress</div>
+        </div>
+
+      </div><!-- /cert-row -->
+
+      <!-- Languages subsection -->
+      <div class="languages-section reveal">
+        <div class="languages-title"
+             data-en="Languages I Speak"
+             data-de="Meine Sprachen">Languages I Speak</div>
+        <div class="lang-pills">
+          <span class="lang-pill">English</span>
+          <span class="lang-pill">German</span>
+          <span class="lang-pill">Hindi</span>
+          <span class="lang-pill">Malayalam</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 7: CONTACT
        ============================================================ -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title reveal">Contact</h2>
+      <h2 class="section-title reveal"
+          data-en="Contact"
+          data-de="Kontakt">Contact</h2>
 
       <div class="contact-card reveal">
         <h3>Let's connect</h3>
@@ -468,7 +651,9 @@
           </a>
 
         </div>
-        <p class="contact-location">Based in Hamburg, Germany &middot; Open to opportunities</p>
+        <p class="contact-location"
+           data-en="Based in Hamburg, Germany &middot; Open to opportunities"
+           data-de="Ansässig in Hamburg &middot; Offen für neue Herausforderungen">Based in Hamburg, Germany &middot; Open to opportunities</p>
       </div>
     </div>
   </section>
@@ -477,9 +662,10 @@
        FOOTER
        ============================================================ -->
   <footer>
-    &copy; 2026 Jovel Jose &middot; Built with curiosity
+    &copy; 2026 Jovel Jose &middot; <span data-en="Built with curiosity" data-de="Mit Neugier gebaut">Built with curiosity</span>
   </footer>
 
+  <script src="assets/js/lang.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

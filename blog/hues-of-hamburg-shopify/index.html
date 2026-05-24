@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How I Helped Build a Shopify Brand from Zero Using Centralised Automation — Jovel Jose</title>
-  <meta name="description" content="How we built Hues of Hamburg using Shopify, a centralised dashboard, and automation running on a Raspberry Pi." />
+  <meta name="description" content="How we built an e-commerce brand using Shopify, a centralised dashboard, and automation running on a Raspberry Pi." />
   <meta property="og:title" content="How I Helped Build a Shopify Brand from Zero Using Centralised Automation" />
-  <meta property="og:description" content="My wife wanted to start a dropshipping business. I wanted to build something useful. Here is how we did it." />
+  <meta property="og:description" content="A family member wanted to start a dropshipping business. I wanted to build something useful. Here is how we did it." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joveljose.com/blog/hues-of-hamburg-shopify/" />
 
@@ -29,6 +29,7 @@
     <header class="article-header">
       <span class="article-category">AI &amp; Automation</span>
       <h1 class="article-title">How I Helped Build a Shopify Brand from Zero Using Centralised Automation</h1>
+      <p class="article-disclaimer">I helped with this project informally in my own time — not as part of any professional engagement.</p>
       <div class="article-meta">
         <span class="article-author">Jovel Jose</span>
         <span>May 2026</span>
@@ -39,21 +40,21 @@
     <!-- Article body -->
     <article class="article-body">
 
-      <p>Sneha wanted to start a dropshipping phone case business in Hamburg. She had the brand — Hues of Hamburg — the idea, the energy, and a very clear vision of what she wanted to sell. What she needed was a system. Not just a Shopify store, but something that could handle the day-to-day operational noise without her staring at a screen all day. That gap became my weekend project, and honestly one of the most satisfying things I have built.</p>
+      <p>A family member wanted to start a dropshipping business in Hamburg. They had the brand concept, the energy, and a clear vision of what they wanted to sell. What was missing was a system. Not just a Shopify store, but something that could handle the day-to-day operational noise without requiring constant attention. That gap became my weekend project, and honestly one of the most satisfying things I have built.</p>
 
       <h2>Starting with Shopify</h2>
 
       <p>The first phase was straightforward: set up the store, pick a theme that felt right for the brand, connect a supplier, and get the first products listed. Shopify handles the storefront well. The onboarding is polished, the admin is clean, and within a weekend you can have something that looks legitimate.</p>
 
-      <p>But once you are past the initial setup, the reality of running an e-commerce store sets in. Orders come in at odd hours. Inventory numbers drift. A product goes out of stock on the supplier's end and you only find out when a customer complains. You are constantly toggling between the Shopify admin, supplier portals, email threads, and spreadsheets — and none of them talk to each other.</p>
+      <p>But once you are past the initial setup, the reality of running an e-commerce store sets in. Orders come in at odd hours. A product goes out of stock on the supplier's end and you only find out when a customer complains. You are constantly toggling between the Shopify admin, supplier portals, email threads, and spreadsheets — and none of them talk to each other.</p>
 
       <p>That is the problem we were not prepared for. Not the technical one. The operational one.</p>
 
       <h2>The Problem with Manual Operations</h2>
 
-      <p>Within the first few weeks, Sneha had three browser tabs open at all times: the Shopify admin, the supplier's portal, and a running Google Sheet where she tracked what was actually selling. It worked, but it was fragile. Any time she closed a tab or missed a notification, something slipped.</p>
+      <p>Within the first few weeks, there were three browser tabs open at all times: the Shopify admin, the supplier's portal, and a running Google Sheet tracking what was actually selling. It worked, but it was fragile. Any time a tab was closed or a notification was missed, something slipped.</p>
 
-      <p>The insight was simple: the data exists. Shopify knows every order the moment it comes in. The supplier has an API. The question was whether we could connect those pieces and surface the right information, at the right time, without anyone having to manually check anything.</p>
+      <p>The insight was simple: the data exists. Shopify knows every order the moment it comes in. The financial figures for a Kleinunternehmen are not complicated — but they are scattered. The question was whether we could connect these pieces and surface the right information, at the right time, without anyone having to manually check anything.</p>
 
       <p>The decision was to stop managing it manually and build a centralised dashboard instead. Not a fancy one. Just one thing that tells you, clearly, what is happening right now and what needs attention.</p>
 
@@ -64,9 +65,9 @@
 <div class="arch-diagram">
   ┌─────────────────────────────────────────────────────┐
   │                   SHOPIFY STORE                     │
-  │            (Orders, Inventory, Products)            │
+  │            (Orders, Revenue, Products)              │
   └──────────────┬──────────────────────────────────────┘
-                 │  Webhooks (orders) + REST (inventory)
+                 │  Webhooks (orders) + REST (sales data)
                  ▼
   ┌──────────────────────────────────────┐
   │         RASPBERRY PI (Home)          │
@@ -75,6 +76,12 @@
   │  │    n8n     │──▶│ Flask Dash   │  │
   │  │ Workflows  │   │  (Central    │  │
   │  └────────────┘   │   View)      │  │
+  │        │          └──────────────┘  │
+  │        │                │           │
+  │        │                ▼           │
+  │        │          ┌──────────────┐  │
+  │        │          │  NAS Storage │  │
+  │        │          │  (Documents) │  │
   │        │          └──────────────┘  │
   │        ▼                            │
   │  ┌────────────┐                     │
@@ -85,15 +92,15 @@
          │
          ▼
   📱 Morning Telegram summary
-     (top sellers · pending orders · low stock)
+     (sales records · EBITDA tracking · revenue predictions)
 </div>
 
-      <p>The Raspberry Pi runs 24/7 in our living room. It costs nothing to operate beyond the electricity. Here is what runs on it:</p>
+      <p>The Raspberry Pi runs 24/7 at home. It costs nothing to operate beyond the electricity. Here is what runs on it:</p>
 
       <ul>
-        <li><strong>n8n</strong> — the workflow orchestration layer. I use it to listen for Shopify webhooks (new orders, order updates, fulfillment events), schedule nightly inventory checks, and trigger alerts when stock drops below a threshold. n8n has a visual editor which made iteration fast, and it runs well on a Pi.</li>
-        <li><strong>Flask dashboard</strong> — a simple internal web app that gives Sneha a single view: today's orders, pending fulfilments, top-selling products this week, and inventory levels. Nothing fancy. It fetches from Shopify's REST API on load and renders a clean table. No JavaScript framework needed.</li>
-        <li><strong>Telegram bot</strong> — the delivery mechanism. Every morning at 7am, a nightly summary lands in a dedicated Telegram channel: what sold, what is low on stock, what needs shipping attention. Sneha reads this with her coffee. It takes about 90 seconds.</li>
+        <li><strong>n8n</strong> — the workflow orchestration layer. It listens for Shopify webhooks (new orders, fulfilment events), runs scheduled nightly jobs for finance monitoring, handles automated document downloads and stores them to NAS, and auto-schedules routine operational tasks. n8n's visual editor made iteration fast, and it runs well on a Pi without breaking a sweat.</li>
+        <li><strong>Flask dashboard</strong> — a simple internal web app providing a single central view: sales records by date, EBITDA score for Kleinunternehmen reporting, historical revenue data, and trend-based revenue predictions. No JavaScript framework needed. It fetches from Shopify's REST API and the local SQLite database on load.</li>
+        <li><strong>Telegram bot</strong> — the delivery mechanism. Every morning a scheduled summary lands in a dedicated Telegram channel covering key metrics from the night before. It takes about 90 seconds to read and tells you everything that matters.</li>
       </ul>
 
       <h2>What We Built</h2>
@@ -101,27 +108,28 @@
       <p>After about three weekends of iteration, the system does the following reliably:</p>
 
       <ul>
-        <li><strong>Order sync</strong>: every new order triggers an n8n workflow that logs it to a lightweight SQLite database on the Pi and updates the dashboard in real time</li>
-        <li><strong>Inventory tracking</strong>: a nightly job compares current stock levels against a threshold we set per product. Anything below the threshold triggers a Telegram alert with the product name and current count</li>
-        <li><strong>Reorder alerts</strong>: if a product hits critical stock, n8n generates a summary message with the supplier link directly in Telegram — one tap to reorder</li>
-        <li><strong>Nightly Telegram report</strong>: a scheduled n8n workflow runs at 6:45am, pulls the day's data, formats it cleanly, and delivers it before either of us wakes up</li>
+        <li><strong>Order sync and sales records tracking</strong>: every new order triggers an n8n workflow that logs it to a lightweight SQLite database on the Pi, building a clean historical record over time</li>
+        <li><strong>Finance monitoring and EBITDA score tracking</strong>: a nightly job calculates key financial metrics suitable for Kleinunternehmen reporting — no accountant needed for the routine summaries</li>
+        <li><strong>Automated document downloading and storage</strong>: supplier invoices, order confirmations, and platform exports are pulled automatically and stored to a NAS on the Pi — no manual filing</li>
+        <li><strong>Revenue predictions using trend analysis</strong>: a rolling trend model runs across the historical sales data and projects short-term revenue expectations, updated nightly</li>
+        <li><strong>Auto-scheduling of routine operational tasks</strong>: recurring operational workflows — supplier check-ins, weekly summaries, report generation — are scheduled and run without anyone having to remember them</li>
       </ul>
 
-      <p>The result: Sneha goes to sleep knowing that if anything goes wrong overnight — an order fails, stock drops, a payment is flagged — she will know about it by morning. She wakes up knowing exactly what sold, what needs restocking, and what needs shipping attention. The operational anxiety dropped noticeably within the first week.</p>
+      <p>The result: a family member goes to sleep knowing that if anything significant happens overnight, they will know about it by morning. They wake up with a clear financial picture, documents already filed, and predictions updated. The operational anxiety that came with manual management dropped noticeably within the first week.</p>
 
       <h2>What I Learned</h2>
 
       <p>A few things stood out from this build that I keep thinking about.</p>
 
-      <p>The boring operational stuff matters more than the flashy tech. I could have built a React dashboard with real-time WebSockets and a beautiful data visualisation layer. I started to, briefly. Then I realised what Sneha actually needed was a number — one number — that told her whether things were fine or not. A table in Flask and a Telegram message every morning solved that completely.</p>
+      <p>The boring operational stuff matters more than the flashy tech. I could have built a React dashboard with real-time WebSockets and a beautiful data visualisation layer. I started to, briefly. Then I realised what was actually needed was a number — one number — that told you whether things were fine or not. A table in Flask and a Telegram message every morning solved that completely.</p>
 
       <p>n8n is genuinely good for this use case. I had looked at it before but never built anything serious with it. For webhook-driven, event-based workflows with a mix of HTTP calls and scheduled jobs, it handles the complexity well. The visual editor makes it easy to reason about flow, and the node library covers most of what you need without custom code.</p>
 
       <p>The Raspberry Pi as an always-on home server is underrated. I have several Pi projects running now and the pattern works: low cost, always available, no cloud bills, no cold starts. For anything that needs to run continuously at low compute intensity, this is a genuinely good architecture choice.</p>
 
-      <p>And finally: building something for someone you love makes you care more about whether it actually works. Not whether it is clever. Whether it works for the person sitting next to you. That focus is a useful forcing function.</p>
+      <p>And finally: building something for someone close to you makes you care more about whether it actually works — not whether it is clever. That focus is a useful forcing function for staying practical.</p>
 
-      <p>What comes next: I want to pull in ad spend data from Meta Ads, so we can see revenue vs. cost per product on the same dashboard. A proper analytics layer — even a simple one — would help Sneha make better decisions about which products to promote. She is also starting to learn how to add new n8n workflows herself, which feels like the right ending to this story.</p>
+      <p>What comes next: pulling in ad spend data so we can see revenue versus cost on the same dashboard. A proper analytics layer — even a simple one — would sharpen the decision-making around which products to promote. The ambition is to have the whole operational picture in one place, updating itself every night, requiring zero manual work beyond actually running the business.</p>
 
       <div class="article-footer-note">
         <a class="back-link" href="../">&#8592; Back to Blog</a>

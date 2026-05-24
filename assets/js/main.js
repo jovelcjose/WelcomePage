@@ -174,9 +174,22 @@
     header.addEventListener('click', () => {
       const bullets = header.nextElementSibling;
       const roleEl  = header.querySelector('.entry-role');
+      const label   = header.querySelector('.expand-label');
       if (!bullets) return;
       const isOpen = bullets.classList.toggle('open');
       if (roleEl) roleEl.classList.toggle('open', isOpen);
+      if (label) {
+        const lang = localStorage.getItem('lang') || 'en';
+        if (isOpen) {
+          label.setAttribute('data-en', 'Hide details');
+          label.setAttribute('data-de', 'Details ausblenden');
+          label.innerHTML = lang === 'de' ? 'Details ausblenden' : 'Hide details';
+        } else {
+          label.setAttribute('data-en', 'Show details');
+          label.setAttribute('data-de', 'Details anzeigen');
+          label.innerHTML = lang === 'de' ? 'Details anzeigen' : 'Show details';
+        }
+      }
     });
   });
 })();
