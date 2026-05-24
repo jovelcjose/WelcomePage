@@ -29,7 +29,6 @@
     <header class="article-header">
       <span class="article-category">AI &amp; Automation</span>
       <h1 class="article-title">How I Helped Build a Shopify Brand from Zero Using Centralised Automation</h1>
-      <p class="article-disclaimer">I helped with this project informally in my own time — not as part of any professional engagement.</p>
       <div class="article-meta">
         <span class="article-author">Jovel Jose</span>
         <span>May 2026</span>
@@ -40,7 +39,7 @@
     <!-- Article body -->
     <article class="article-body">
 
-      <p>A family member wanted to start a dropshipping business in Hamburg. They had the brand concept, the energy, and a clear vision of what they wanted to sell. What was missing was a system. Not just a Shopify store, but something that could handle the day-to-day operational noise without requiring constant attention. That gap became my weekend project, and honestly one of the most satisfying things I have built.</p>
+      <p>A family member wanted to start a dropshipping business. I wanted to build something useful.</p>
 
       <h2>Starting with Shopify</h2>
 
@@ -54,7 +53,7 @@
 
       <p>Within the first few weeks, there were three browser tabs open at all times: the Shopify admin, the supplier's portal, and a running Google Sheet tracking what was actually selling. It worked, but it was fragile. Any time a tab was closed or a notification was missed, something slipped.</p>
 
-      <p>The insight was simple: the data exists. Shopify knows every order the moment it comes in. The financial figures for a Kleinunternehmen are not complicated — but they are scattered. The question was whether we could connect these pieces and surface the right information, at the right time, without anyone having to manually check anything.</p>
+      <p>The insight was simple: the data exists. Shopify knows every order the moment it comes in. The financial figures for a small business are not complicated — but they are scattered. The question was whether we could connect these pieces and surface the right information, at the right time, without anyone having to manually check anything.</p>
 
       <p>The decision was to stop managing it manually and build a centralised dashboard instead. Not a fancy one. Just one thing that tells you, clearly, what is happening right now and what needs attention.</p>
 
@@ -99,7 +98,7 @@
 
       <ul>
         <li><strong>n8n</strong> — the workflow orchestration layer. It listens for Shopify webhooks (new orders, fulfilment events), runs scheduled nightly jobs for finance monitoring, handles automated document downloads and stores them to NAS, and auto-schedules routine operational tasks. n8n's visual editor made iteration fast, and it runs well on a Pi without breaking a sweat.</li>
-        <li><strong>Flask dashboard</strong> — a simple internal web app providing a single central view: sales records by date, EBITDA score for Kleinunternehmen reporting, historical revenue data, and trend-based revenue predictions. No JavaScript framework needed. It fetches from Shopify's REST API and the local SQLite database on load.</li>
+        <li><strong>Flask dashboard</strong> — a simple internal web app providing a single central view: sales records by date, EBITDA score for small business reporting, historical revenue data, and trend-based revenue predictions. No JavaScript framework needed. It fetches from Shopify's REST API and the local SQLite database on load.</li>
         <li><strong>Telegram bot</strong> — the delivery mechanism. Every morning a scheduled summary lands in a dedicated Telegram channel covering key metrics from the night before. It takes about 90 seconds to read and tells you everything that matters.</li>
       </ul>
 
@@ -109,7 +108,7 @@
 
       <ul>
         <li><strong>Order sync and sales records tracking</strong>: every new order triggers an n8n workflow that logs it to a lightweight SQLite database on the Pi, building a clean historical record over time</li>
-        <li><strong>Finance monitoring and EBITDA score tracking</strong>: a nightly job calculates key financial metrics suitable for Kleinunternehmen reporting — no accountant needed for the routine summaries</li>
+        <li><strong>Finance monitoring and EBITDA score tracking</strong>: a nightly job calculates key financial metrics suitable for small business reporting — no accountant needed for the routine summaries</li>
         <li><strong>Automated document downloading and storage</strong>: supplier invoices, order confirmations, and platform exports are pulled automatically and stored to a NAS on the Pi — no manual filing</li>
         <li><strong>Revenue predictions using trend analysis</strong>: a rolling trend model runs across the historical sales data and projects short-term revenue expectations, updated nightly</li>
         <li><strong>Auto-scheduling of routine operational tasks</strong>: recurring operational workflows — supplier check-ins, weekly summaries, report generation — are scheduled and run without anyone having to remember them</li>

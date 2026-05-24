@@ -44,6 +44,7 @@
         <li><a href="#contact"
                data-en="Contact"
                data-de="Kontakt">Contact</a></li>
+        <li><a href="#" onclick="openGame(); return false;">&#127918; Defend</a></li>
       </ul>
       <div class="lang-toggle">
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
@@ -64,6 +65,7 @@
     <a href="blog/"       data-en="Blog"       data-de="Blog">Blog</a>
     <a href="hobbies/"    data-en="Hobbies"    data-de="Hobbys">Hobbies</a>
     <a href="#contact"    data-en="Contact"    data-de="Kontakt">Contact</a>
+    <a href="#" onclick="openGame(); return false;">&#127918; Defend</a>
   </div>
 
   <!-- ============================================================
@@ -654,6 +656,9 @@
         <p class="contact-location"
            data-en="Based in Hamburg, Germany &middot; Open to opportunities"
            data-de="Ansässig in Hamburg &middot; Offen für neue Herausforderungen">Based in Hamburg, Germany &middot; Open to opportunities</p>
+        <p class="konami-hint"
+           data-en="I dare you to try the Konami code."
+           data-de="Ich fordere dich heraus, den Konami-Code einzugeben.">I dare you to try the Konami code.</p>
       </div>
     </div>
   </section>
@@ -665,7 +670,55 @@
     &copy; 2026 Jovel Jose &middot; <span data-en="Built with curiosity" data-de="Mit Neugier gebaut">Built with curiosity</span>
   </footer>
 
+  <!-- ============================================================
+       PI DEFENDER GAME OVERLAY
+       ============================================================ -->
+  <div id="pi-defender-overlay">
+    <button class="game-close-btn" onclick="closeGame()" aria-label="Close game">&#215;</button>
+
+    <!-- Star Wars Crawl -->
+    <div id="crawl-screen">
+      <div class="crawl-fade-top"></div>
+      <div class="crawl-viewport">
+        <div id="crawl-inner">
+          <p>A long time ago, in a server room far, far away&hellip;</p>
+          <p>&nbsp;</p>
+          <p>The cloud empires grew powerful. AWS, Azure, GCP &mdash; their outages rippled across the galaxy, taking down startups, banks, and the occasional smart fridge.</p>
+          <p>&nbsp;</p>
+          <p>But on a desk in Hamburg, a small device hummed quietly.</p>
+          <p>&nbsp;</p>
+          <p>8 gigabytes of RAM. An NVMe SSD. A Hailo-10H neural accelerator capable of 40 trillion operations per second.</p>
+          <p>&nbsp;</p>
+          <p>It asked for no subscription. It sent no data to the mothership. It simply&hellip; ran.</p>
+          <p>&nbsp;</p>
+          <p>You are its last line of defence.</p>
+          <p>&nbsp;</p>
+          <p>Incoming: a cascading Lambda timeout. A rogue S3 bucket policy. A DynamoDB throttle event.</p>
+          <p>&nbsp;</p>
+          <p>Defend the Pi. Defend local compute. Defend the right to run your own stack.</p>
+          <p>&nbsp;</p>
+          <p><strong>May the uptime be with you.</strong></p>
+        </div>
+      </div>
+      <div class="crawl-skip">SPACE to skip</div>
+    </div>
+
+    <!-- Instructions -->
+    <div id="instructions-screen">
+      <p class="inst-line">SPACE to start &nbsp;&middot;&nbsp; &#8592; &#8594; to move &nbsp;&middot;&nbsp; SPACE to shoot</p>
+      <p class="press-start">Press SPACE to begin</p>
+    </div>
+
+    <!-- Game Canvas -->
+    <div id="game-canvas-wrap">
+      <canvas id="game-canvas" width="600" height="500"></canvas>
+    </div>
+  </div>
+
   <script src="assets/js/lang.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/easter.js"></script>
+  <script src="assets/js/game.js"></script>
 </body>
 </html>
