@@ -270,12 +270,7 @@
     spawnWave();
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(loop);
-
-    /* Attach touch controls to canvas */
-    canvas.addEventListener('touchstart', onTouchStart, { passive: false });
-    canvas.addEventListener('touchmove',  onTouchMove,  { passive: false });
-    canvas.addEventListener('touchend',   onTouchEnd,   { passive: false });
-    console.log('TOUCH: OK');
+    console.log('TOUCH GAMEPLAY: OK');
   }
 
   /* ─── Game Loop ─── */
@@ -503,48 +498,6 @@
     }
   }
 
-  /* ─── Touch Handlers ─── */
-  function getTouchCanvasX(touch) {
-    const c = el('game-canvas');
-    if (!c) return 0;
-    const r = c.getBoundingClientRect();
-    /* Map visual position to logical canvas coords */
-    return (touch.clientX - r.left) * (CW / r.width);
-  }
-
-  function onTouchStart(e) {
-    e.preventDefault();
-    if (phase !== 'playing') return;
-    const t = e.touches[0];
-    touchStartX = t.clientX;
-    touchStartY = t.clientY;
-    touchDir = getTouchCanvasX(t) < CW / 2 ? -1 : 1;
-  }
-
-  function onTouchMove(e) {
-    e.preventDefault();
-    if (phase !== 'playing') return;
-    const t = e.touches[0];
-    touchDir = getTouchCanvasX(t) < CW / 2 ? -1 : 1;
-  }
-
-  function onTouchEnd(e) {
-    e.preventDefault();
-    if (phase !== 'playing') { touchDir = 0; return; }
-    const t = e.changedTouches[0];
-    const dx = t.clientX - touchStartX;
-    const dy = t.clientY - touchStartY;
-    /* Tap if movement < 10px */
-    if (Math.sqrt(dx * dx + dy * dy) < 10) {
-      const now = performance.now();
-      if (now - lastShot > SHOOT_COOL) {
-        bullets.push({ x: px, y: py - PH / 2 });
-        lastShot = now;
-      }
-    }
-    touchDir = 0;
-  }
-
   /* ─── Input ─── */
   document.addEventListener('keydown', (e) => {
     keys[e.code] = true;
@@ -563,6 +516,52 @@
   });
 
   document.addEventListener('keyup', (e) => { keys[e.code] = false; });
+
+  /* ─── Touch Input (document-level, same pattern as keyboard) ─── */
+  document.addEventListener('touchstart', (e) => {
+    const ov = el('pi-defender-overlay');
+    if (!ov || ov.style.display === 'none') return;
+    if (phase !== 'playing') return;
+    e.preventDefault();
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    const c = el('game-canvas');
+    if (!c) return;
+    const r = c.getBoundingClientRect();
+    touchDir = t.clientX < r.left + r.width / 2 ? -1 : 1;
+  }, { passive: false });
+
+  document.addEventListener('touchmove', (e) => {
+    const ov = el('pi-defender-overlay');
+    if (!ov || ov.style.display === 'none') return;
+    if (phase !== 'playing') return;
+    e.preventDefault();
+    const t = e.touches[0];
+    const c = el('game-canvas');
+    if (!c) return;
+    const r = c.getBoundingClientRect();
+    touchDir = t.clientX < r.left + r.width / 2 ? -1 : 1;
+  }, { passive: false });
+
+  document.addEventListener('touchend', (e) => {
+    const ov = el('pi-defender-overlay');
+    if (!ov || ov.style.display === 'none') return;
+    if (phase !== 'playing') { touchDir = 0; return; }
+    e.preventDefault();
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    /* Single tap (< 10px movement) fires laser */
+    if (Math.sqrt(dx * dx + dy * dy) < 10) {
+      const now = performance.now();
+      if (now - lastShot > SHOOT_COOL) {
+        bullets.push({ x: px, y: py - PH / 2 });
+        lastShot = now;
+      }
+    }
+    touchDir = 0;
+  }, { passive: false });
 
   /* Click on canvas to shoot */
   document.addEventListener('click', (e) => {
