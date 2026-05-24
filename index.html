@@ -174,6 +174,12 @@
           <span class="hobby-tooltip" data-en="Fitness &amp; strength" data-de="Fitness &amp; Kraft">Fitness &amp; strength</span>
         </a>
         <a class="hobby-link" href="hobbies/" target="_blank" rel="noopener noreferrer"
+           data-en="Kayak" data-de="Kajak" title="Kayak">
+          <span class="hobby-emoji">🛶</span>
+          <span class="hobby-label" data-en="Kayak" data-de="Kajak">Kayak</span>
+          <span class="hobby-tooltip" data-en="Open water &amp; rivers" data-de="Offenes Wasser &amp; Flüsse">Open water &amp; rivers</span>
+        </a>
+        <a class="hobby-link" href="hobbies/" target="_blank" rel="noopener noreferrer"
            data-en="Paddle" data-de="Paddeln" title="Paddle Boating">
           <span class="hobby-emoji">🚣</span>
           <span class="hobby-label" data-en="Paddle" data-de="Paddeln">Paddle</span>
@@ -617,10 +623,14 @@
              data-en="Languages I Speak"
              data-de="Meine Sprachen">Languages I Speak</div>
         <div class="lang-pills">
-          <span class="lang-pill lang-pill--switch" onclick="setLang('en')" title="switch to English" style="cursor:pointer;">English</span>
-          <span class="lang-pill lang-pill--switch" onclick="setLang('de')" title="auf Deutsch wechseln" style="cursor:pointer;">German</span>
-          <span class="lang-pill tag" title="click me" style="cursor:pointer;">Hindi ✦</span>
-          <span class="lang-pill tag" title="click me" style="cursor:pointer;">Malayalam ✦</span>
+          <span class="lang-pill lang-pill--switch" onclick="setLang('en')" title="switch to English" style="cursor:pointer;"
+                data-en="English" data-de="Englisch">English</span>
+          <span class="lang-pill lang-pill--switch" onclick="setLang('de')" title="auf Deutsch wechseln" style="cursor:pointer;"
+                data-en="German" data-de="Deutsch">German</span>
+          <span class="lang-pill tag" title="click me" style="cursor:pointer;"
+                data-en="Hindi ✦" data-de="Hindi ✦">Hindi ✦</span>
+          <span class="lang-pill tag" title="click me" style="cursor:pointer;"
+                data-en="Malayalam ✦" data-de="Malayalam ✦">Malayalam ✦</span>
         </div>
       </div>
 
@@ -734,6 +744,9 @@
     <!-- Game Canvas -->
     <div id="game-canvas-wrap">
       <canvas id="game-canvas" width="600" height="500"></canvas>
+      <div id="game-touch-hint"
+           data-en="Mobile: tap left/right to move · tap to shoot · double-tap to skip intro"
+           data-de="Mobil: links/rechts tippen zum Bewegen · tippen zum Schießen · doppeltippen zum Überspringen">Mobile: tap left/right to move · tap to shoot · double-tap to skip intro</div>
     </div>
   </div>
 

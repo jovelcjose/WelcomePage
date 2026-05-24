@@ -39,6 +39,9 @@
   let waveSize   = 3;
 
   const keys = {};
+  let touchDir = 0;           /* -1 left, 0 none, 1 right */
+  let touchStartX = 0, touchStartY = 0;
+  let lastTapTime = 0;
 
   /* ─── Inject CSS (called once) ─── */
   function injectCSS() {
@@ -113,7 +116,7 @@
         text-align: center;
         transform: rotateX(22deg);
         transform-origin: 50% 100%;
-        animation: sw-crawl 38s linear forwards;
+        animation: sw-crawl 53.2s linear forwards;
       }
       #crawl-inner p { margin: 0 0 0.6em; }
       @keyframes sw-crawl {
@@ -165,12 +168,22 @@
         display: block;
         max-width: min(600px, 96vw);
         height: auto;
+        touch-action: none;
       }
       #game-score-bar {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
         color: rgba(0,212,255,0.5);
         letter-spacing: 0.08em;
+      }
+      #game-touch-hint {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        color: rgba(0,212,255,0.45);
+        letter-spacing: 0.06em;
+        text-align: center;
+        max-width: min(600px, 96vw);
+        line-height: 1.5;
       }
     `;
     document.head.appendChild(s);
@@ -209,14 +222,32 @@
     }
 
     clearTimeout(window._gCrawlTimer);
-    window._gCrawlTimer = setTimeout(showInstructions, 38500);
+    window._gCrawlTimer = setTimeout(showInstructions, 53700);
+    console.log('CRAWL SPEED: OK — new duration 53.2s');
+
+    /* Double-tap on crawl screen to skip (mobile) */
+    const crawlEl = el('crawl-screen');
+    crawlEl._onDoubleTap = function (e) {
+      const now = performance.now();
+      if (now - lastTapTime < 350) {
+        e.preventDefault();
+        showInstructions();
+      }
+      lastTapTime = now;
+    };
+    crawlEl.addEventListener('touchend', crawlEl._onDoubleTap);
   }
 
   /* ─── Instructions ─── */
   function showInstructions() {
     clearTimeout(window._gCrawlTimer);
     phase = 'instructions';
-    el('crawl-screen').style.display        = 'none';
+    const crawlEl = el('crawl-screen');
+    crawlEl.style.display = 'none';
+    if (crawlEl._onDoubleTap) {
+      crawlEl.removeEventListener('touchend', crawlEl._onDoubleTap);
+      crawlEl._onDoubleTap = null;
+    }
     el('instructions-screen').style.display = 'flex';
     el('game-canvas-wrap').style.display    = 'none';
   }
@@ -239,6 +270,12 @@
     spawnWave();
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(loop);
+
+    /* Attach touch controls to canvas */
+    canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+    canvas.addEventListener('touchmove',  onTouchMove,  { passive: false });
+    canvas.addEventListener('touchend',   onTouchEnd,   { passive: false });
+    console.log('TOUCH: OK');
   }
 
   /* ─── Game Loop ─── */
@@ -254,9 +291,9 @@
 
   /* ─── Update ─── */
   function update(dt, ts) {
-    /* Player movement */
-    if (keys['ArrowLeft'] || keys['KeyA']) px -= PLAYER_SPD * dt * 60;
-    if (keys['ArrowRight'] || keys['KeyD']) px += PLAYER_SPD * dt * 60;
+    /* Player movement (keyboard + touch) */
+    if (keys['ArrowLeft']  || keys['KeyA'] || touchDir === -1) px -= PLAYER_SPD * dt * 60;
+    if (keys['ArrowRight'] || keys['KeyD'] || touchDir ===  1) px += PLAYER_SPD * dt * 60;
     px = Math.max(PW / 2, Math.min(CW - PW / 2, px));
 
     /* Shoot (hold space) */
@@ -452,12 +489,60 @@
   /* ─── Reset ─── */
   function resetAll() {
     phase = 'idle';
+    touchDir = 0;
     cancelAnimationFrame(raf);
     clearTimeout(window._gCrawlTimer);
     bullets = []; enemies = []; explosions = [];
     ['crawl-screen','instructions-screen','game-canvas-wrap'].forEach(id => {
       const e = el(id); if (e) e.style.display = 'none';
     });
+    const crawlEl = el('crawl-screen');
+    if (crawlEl && crawlEl._onDoubleTap) {
+      crawlEl.removeEventListener('touchend', crawlEl._onDoubleTap);
+      crawlEl._onDoubleTap = null;
+    }
+  }
+
+  /* ─── Touch Handlers ─── */
+  function getTouchCanvasX(touch) {
+    const c = el('game-canvas');
+    if (!c) return 0;
+    const r = c.getBoundingClientRect();
+    /* Map visual position to logical canvas coords */
+    return (touch.clientX - r.left) * (CW / r.width);
+  }
+
+  function onTouchStart(e) {
+    e.preventDefault();
+    if (phase !== 'playing') return;
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchDir = getTouchCanvasX(t) < CW / 2 ? -1 : 1;
+  }
+
+  function onTouchMove(e) {
+    e.preventDefault();
+    if (phase !== 'playing') return;
+    const t = e.touches[0];
+    touchDir = getTouchCanvasX(t) < CW / 2 ? -1 : 1;
+  }
+
+  function onTouchEnd(e) {
+    e.preventDefault();
+    if (phase !== 'playing') { touchDir = 0; return; }
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    /* Tap if movement < 10px */
+    if (Math.sqrt(dx * dx + dy * dy) < 10) {
+      const now = performance.now();
+      if (now - lastShot > SHOOT_COOL) {
+        bullets.push({ x: px, y: py - PH / 2 });
+        lastShot = now;
+      }
+    }
+    touchDir = 0;
   }
 
   /* ─── Input ─── */
