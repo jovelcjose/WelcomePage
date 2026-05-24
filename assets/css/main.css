@@ -239,6 +239,7 @@ img { max-width: 100%; display: block; }
 
 /* Dot grid background */
 #hero-canvas {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
@@ -920,10 +921,18 @@ footer {
   color: var(--text-primary);
   background: var(--bg-card);
   letter-spacing: 0.04em;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  user-select: none;
 }
 
-.lang-pill:hover { border-color: var(--border-glow); }
+.lang-pill:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.35);
+}
+
+.lang-pill--switch:hover {
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
 
 /* ============================================================
    RESPONSIVE

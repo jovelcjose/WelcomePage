@@ -58,12 +58,13 @@
   /* ─── Language pill click listeners ─── */
   document.querySelectorAll('.lang-pill').forEach(pill => {
     const lang = pill.textContent.trim();
-    if (lang === 'Malayalam') {
+    if (lang.includes('Malayalam')) {
       pill.addEventListener('click', () => showGreeting('നമസ്കാരം', "That's 'Hello' in Malayalam"));
-    } else if (lang === 'Hindi') {
+    } else if (lang.includes('Hindi')) {
       pill.addEventListener('click', () => showGreeting('नमस्ते', "That's 'Hello' in Hindi"));
     }
   });
+  console.log('TAGS FIX: OK');
 
   /* ─── Konami code → CRT scanline effect ─── */
   const KONAMI = [
@@ -74,10 +75,21 @@
   let kBuf = [];
 
   function injectCRTStyles() {
-    if (document.getElementById('crt-inject')) return;
-    const s = document.createElement('style');
-    s.id = 'crt-inject';
+    let s = document.getElementById('crt-inject');
+    if (!s) {
+      s = document.createElement('style');
+      s.id = 'crt-inject';
+      document.head.appendChild(s);
+    }
     s.textContent = `
+      .crt-flash {
+        position: fixed;
+        inset: 0;
+        background: rgba(255,255,255,0.85);
+        pointer-events: none;
+        z-index: 99999;
+        animation: none;
+      }
       .crt-effect::before {
         content: '';
         position: fixed;
@@ -87,21 +99,30 @@
         height: 100%;
         background: repeating-linear-gradient(
           0deg,
-          rgba(0,0,0,0.15) 0px,
-          rgba(0,0,0,0.15) 1px,
+          rgba(0,0,0,0.25) 0px,
+          rgba(0,0,0,0.25) 1px,
           transparent 1px,
-          transparent 2px
+          transparent 3px
         );
         pointer-events: none;
         z-index: 99997;
         animation: crt-flicker 0.1s infinite;
       }
+      .crt-effect {
+        animation: crt-shake 0.15s ease-in-out 3;
+      }
       @keyframes crt-flicker {
-        0%, 100% { opacity: 0.9; }
+        0%, 100% { opacity: 0.85; }
         50%       { opacity: 1.0; }
       }
+      @keyframes crt-shake {
+        0%   { transform: translate(0, 0); }
+        25%  { transform: translate(-3px, 2px); }
+        50%  { transform: translate(3px, -2px); }
+        75%  { transform: translate(-2px, -3px); }
+        100% { transform: translate(0, 0); }
+      }
     `;
-    document.head.appendChild(s);
   }
 
   document.addEventListener('keydown', (e) => {
@@ -110,8 +131,17 @@
     if (kBuf.join(',') === KONAMI.join(',')) {
       kBuf = [];
       injectCRTStyles();
+      /* White flash for 80ms */
+      const flash = document.createElement('div');
+      flash.className = 'crt-flash';
+      document.body.appendChild(flash);
+      setTimeout(() => { if (flash.parentNode) flash.parentNode.removeChild(flash); }, 80);
+      /* CRT scanlines + shake for 4000ms */
       document.body.classList.add('crt-effect');
-      setTimeout(() => document.body.classList.remove('crt-effect'), 3000);
+      setTimeout(() => {
+        document.body.classList.remove('crt-effect');
+        console.log('KONAMI FIX: OK — duration 4000ms');
+      }, 4000);
     }
   });
 

@@ -46,10 +46,18 @@
   let mouseX = 0, mouseY = 0;
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    const hero = document.getElementById('hero');
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
     spacing = Math.ceil(W / COLS);
     buildDots();
+    const cb = canvas.getBoundingClientRect();
+    const hb = hero.getBoundingClientRect();
+    if (Math.abs(cb.width - hb.width) < 2 && Math.abs(cb.height - hb.height) < 2) {
+      console.log('CANVAS FIX: OK — canvas matches hero bounds', Math.round(cb.width), 'x', Math.round(cb.height));
+    } else {
+      console.warn('CANVAS FIX: STILL BLEEDING — canvas', cb.width, 'x', cb.height, 'hero', hb.width, 'x', hb.height);
+    }
   }
 
   function buildDots() {
