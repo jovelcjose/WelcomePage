@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building the Ultimate Raspberry Pi 5 Home Server: NVMe SSD + Argon ONE V5 Case — Jovel Jose</title>
+  <meta name="description" content="How we turned a Raspberry Pi 5, a 1TB NVMe SSD, and an Argon ONE V5 case into the home server running seven automation projects — at zero ongoing compute cost." />
+  <meta property="og:title" content="Building the Ultimate Raspberry Pi 5 Home Server: NVMe SSD + Argon ONE V5 Case" />
+  <meta property="og:description" content="How we turned a Raspberry Pi 5, a 1TB NVMe SSD, and an Argon ONE V5 case into the home server running seven automation projects — at zero ongoing compute cost." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://joveljose.com/blog/pi5-server-build/" />
+
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- Article nav -->
+  <div class="article-container">
+    <nav class="article-nav">
+      <a class="blog-nav-back" href="../">
+        &#8592; Blog
+      </a>
+    </nav>
+  </div>
+
+  <div class="article-container">
+
+    <!-- Article header -->
+    <header class="article-header">
+      <span class="article-category">Hardware / Home Lab</span>
+      <h1 class="article-title">Building the Ultimate Raspberry Pi 5 Home Server: NVMe SSD + Argon ONE V5 Case</h1>
+      <div class="article-meta">
+        <span class="article-author">Jovel Jose</span>
+        <span>June 2026</span>
+        <span>7 min read</span>
+      </div>
+    </header>
+
+    <!-- Hero image -->
+    <img class="article-hero"
+         src="/assets/img/blog/pi5-build/blog_img_1_rasberry.jpg"
+         alt="Raspberry Pi 5 being assembled in the Argon ONE V5 case with NVMe SSD" />
+    <p class="article-hero-caption">Assembling the Pi 5 into the Argon ONE V5 case — the foundation of our home automation stack</p>
+
+    <!-- Article body -->
+    <article class="article-body">
+
+      <h2>Hardware Configuration</h2>
+
+      <p>This is the full parts list. Every component was chosen for a reason — no filler, no unnecessary spend.</p>
+
+      <div class="specs-table-wrap">
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Model</th>
+              <th>Spec</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SBC</td>
+              <td>Raspberry Pi 5</td>
+              <td>8GB LPDDR4X RAM, BCM2712 quad-core Cortex-A76 @ 2.4GHz</td>
+              <td>Official Pi 5 — not a clone</td>
+            </tr>
+            <tr>
+              <td>Case</td>
+              <td>Argon ONE V5 M.2 NVMe PCIe</td>
+              <td>Active fan, passive heatsink, GPIO access</td>
+              <td>Designed for Pi 5, exposes full PCIe 3.0</td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>Crucial P310 1TB M.2 NVMe SSD</td>
+              <td>PCIe 3.0 x1 (Pi limitation), ~900 MB/s read</td>
+              <td>Connected via Argon's PCIe bridge — no USB bottleneck</td>
+            </tr>
+            <tr>
+              <td>Power</td>
+              <td>Official Raspberry Pi 27W USB-C PSU</td>
+              <td>5V/5A, PD-compliant</td>
+              <td>Required for stable NVMe + Pi 5 — do not use cheap adapters</td>
+            </tr>
+            <tr>
+              <td>Thermal pad</td>
+              <td>Included with Argon V5</td>
+              <td>Blue thermal pad between board and heatsink</td>
+              <td>Pre-applied during build</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What We're Running On It</h2>
+
+      <p>Seven projects, one machine. This is the current stack living on the Pi.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-name">Wealth Command Center</div>
+          <div class="service-desc">Personal finance intelligence dashboard</div>
+          <div class="service-port">PostgreSQL + Grafana</div>
+        </div>
+        <div class="service-card">
+          <div class="service-name">Career Command Center</div>
+          <div class="service-desc">Job board aggregator, CV prompt engine, LinkedIn tracker</div>
+        </div>
+        <div class="service-card">
+          <div class="service-name">Germanos</div>
+          <div class="service-desc">German language learning automation</div>
+          <div class="service-port">n8n + local LLM</div>
+        </div>
+        <div class="service-card">
+          <div class="service-name">E-Commerce Command Center</div>
+          <div class="service-desc">E-commerce automation for order tracking, inventory, and fulfilment workflows</div>
+          <div class="service-port">n8n + Flask</div>
+        </div>
+        <div class="service-card">
+          <div class="service-name">Pi-hole</div>
+          <div class="service-desc">Network-wide ad blocking for the whole flat</div>
+          <div class="service-port">DNS</div>
+        </div>
+        <div class="service-card">
+          <div class="service-name">Local LLM Inference</div>
+          <div class="service-desc">Qwen / Llama models via Ollama for pre-filtering automation pipelines</div>
+          <div class="service-port">Ollama</div>
+        </div>
+        <div class="service-card">
+          <div class="service-name">n8n</div>
+          <div class="service-desc">Self-hosted workflow automation — the glue between every other service</div>
+        </div>
+      </div>
+
+      <h2>Why Run This Locally?</h2>
+
+      <p>Seven projects, zero ongoing compute cost. API spend is kept to €9–15 per month by running heavy polling, scheduling, and LLM inference locally. Cloud APIs — Gemini Flash, DeepSeek, Claude — are used only for high-value outputs where quality matters and frequency is low. This machine is the filter layer: it decides what is worth sending to an expensive API and what can be handled on-device.</p>
+
+      <p>The stack also runs pgvector inside the same PostgreSQL instance, storing vector embeddings for each automation's outputs. Over time this enables lightweight reinforced learning loops — job match scores improve as the career tracker learns preferences, product recommendations sharpen as the e-commerce center logs conversions, and finance alerts self-calibrate against actual spending patterns. All inference stays local; nothing leaves the machine.</p>
+
+      <h2>The Build — Key Steps</h2>
+
+      <ul>
+        <li><strong>Boot from NVMe, not SD card</strong> — flash Raspberry Pi OS directly to the NVMe via Raspberry Pi Imager using a USB-to-M.2 adapter, then set PCIe boot order via <code>raspi-config</code> or <code>rpi-eeprom-config</code>. The SD slot is not used at all.</li>
+        <li><strong>Enable PCIe Gen 3</strong> — add <code>dtparam=pciex1_gen=3</code> to <code>/boot/firmware/config.txt</code> to unlock full Gen 3 speeds. Without this line the drive runs at Gen 2 by default.</li>
+        <li><strong>Argon ONE fan control</strong> — install the Argon ONE script which registers a systemd service and sets a temperature-based fan curve. The fan stays silent under 55°C and spins up gradually above that.</li>
+        <li><strong>PostgreSQL + port mapping</strong> — one shared PostgreSQL instance serves multiple projects, each with its own database and user. Ports for each dashboard are mapped explicitly so nothing collides.</li>
+        <li><strong>Docker + Portainer</strong> — containerised services run via Docker Compose. Portainer provides a lightweight web UI for container management without needing to SSH in for every restart.</li>
+        <li><strong>Tailscale</strong> — remote access to every service is handled by Tailscale. No ports open on the router, no VPN configuration overhead. The Pi is reachable from anywhere with a stable private IP on the tailnet.</li>
+      </ul>
+
+      <p>This build replaced a cloud VM that was costing €15/month and is faster for local inference. Total hardware cost: one-time, already paid for itself in three months.</p>
+
+      <div class="article-footer-note">
+        <a class="back-link" href="../">&#8592; Back to Blog</a>
+        <a class="back-link" href="../../">joveljose.com</a>
+      </div>
+
+    </article>
+  </div>
+
+  <footer class="blog-footer">
+    &copy; 2026 Jovel Jose &middot; Built with curiosity
+  </footer>
+
+</body>
+</html>

@@ -370,9 +370,114 @@ img { max-width: 100%; display: block; }
 
 .back-link:hover { color: var(--blog-accent); }
 
+/* --- Hero image (article pages) --- */
+.article-hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.article-hero-caption {
+  font-size: 0.8rem;
+  color: var(--blog-text-muted);
+  font-style: italic;
+  text-align: center;
+  margin: 10px 0 40px;
+  line-height: 1.55;
+}
+
+/* --- Specs table (article pages) --- */
+.specs-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--blog-border-card);
+  border-radius: var(--radius);
+  margin: 1.5em 0 2.5em;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.specs-table th {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--blog-text-muted);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--blog-border);
+  text-align: left;
+  background: #f2ede6;
+  white-space: nowrap;
+}
+
+.specs-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--blog-border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.specs-table tbody tr:last-child td { border-bottom: none; }
+
+.specs-table td:first-child {
+  font-weight: 600;
+  color: var(--blog-accent);
+  white-space: nowrap;
+}
+
+/* --- Services grid (article pages) --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 1.5em 0 2.5em;
+}
+
+.service-card {
+  background: var(--blog-bg-card);
+  border: 1px solid var(--blog-border-card);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.service-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--blog-text);
+  margin-bottom: 4px;
+}
+
+.service-desc {
+  font-size: 0.83rem;
+  color: var(--blog-text-muted);
+  line-height: 1.55;
+}
+
+.service-port {
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+  color: var(--blog-accent);
+  margin-top: 6px;
+}
+
+/* --- Post card thumbnail --- */
+.post-card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .post-grid { grid-template-columns: 1fr; }
   .blog-header { padding: 36px 0 28px; }
   .article-header { padding: 36px 0 28px; }
+  .services-grid { grid-template-columns: 1fr; }
 }
